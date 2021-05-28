@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhum de Guybrush", "Rhum de Guybrush\Rhum de Guybrush.csproj", "{31664BD3-132E-4F2D-9C27-2E27880E83A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhum de Guybrush", "Rhum de Guybrush\Rhum de Guybrush.csproj", "{31664BD3-132E-4F2D-9C27-2E27880E83A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRhumDeGuybrush", "TestRhumDeGuybrush\TestRhumDeGuybrush.csproj", "{21803317-D33F-461E-99BB-1BEAA51A5E68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cartes", "Cartes", "{DD28146E-AB21-4506-80E7-48A3A8D1A098}"
+	ProjectSection(SolutionItems) = preProject
+		Cartes\Phatt.chiffre = Cartes\Phatt.chiffre
+		Cartes\Phatt.clair = Cartes\Phatt.clair
+		Cartes\Scabb.chiffre = Cartes\Scabb.chiffre
+		Cartes\Scabb.clair = Cartes\Scabb.clair
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,10 @@ Global
 		{31664BD3-132E-4F2D-9C27-2E27880E83A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31664BD3-132E-4F2D-9C27-2E27880E83A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31664BD3-132E-4F2D-9C27-2E27880E83A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21803317-D33F-461E-99BB-1BEAA51A5E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21803317-D33F-461E-99BB-1BEAA51A5E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21803317-D33F-461E-99BB-1BEAA51A5E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21803317-D33F-461E-99BB-1BEAA51A5E68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

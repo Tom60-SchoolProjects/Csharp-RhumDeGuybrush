@@ -6,4 +6,12 @@
     <RootNamespace>Rhum_de_Guybrush</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+
 </Project>
