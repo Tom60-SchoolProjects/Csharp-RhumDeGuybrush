@@ -94,7 +94,7 @@ namespace Rhum_de_Guybrush
             {
                 foreach(var c in l)
                 {
-                    Console.Write(c);
+                    Console.Write("{0}:",c);
                 }
                 Console.WriteLine();
             }
