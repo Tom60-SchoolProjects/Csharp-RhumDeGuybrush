@@ -56,7 +56,13 @@ namespace Rhum_de_Guybrush
 
         public long TailleMoyenne()
         {
-            return 0;
+            int total;
+            for (var i = 0; i < Parcelle.count; i++)
+            {
+                total += Parcelle[i].TailleTotal;
+            }
+            total = total / Parcelle.count
+            return total;
         }
         #endregion
     }
