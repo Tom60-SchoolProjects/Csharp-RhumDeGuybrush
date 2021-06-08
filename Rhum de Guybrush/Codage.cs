@@ -40,84 +40,78 @@ namespace Rhum_de_Guybrush
         {
             try
             {
-                Carte carte = new Carte(null);
                 StreamReader streamReader = new StreamReader(chemin);
                 string texte = streamReader.ReadToEnd();
-                string[] lignes = texte.Split('|');
+                string[] lignes = texte.Split('|', StringSplitOptions.RemoveEmptyEntries);
                 string[] colonne;
-                int frontier;
-                int unite;
-                bool zero;
+                int nombre,cPrevious;
+                bool bordEst = false, bordSud=false, bordOuest=false, bordNord=false;
+                List<Parcelle> parcelles = new List<Parcelle>();
+                List<Unite> unites = new List<Unite>();
                 Parcelle.TypeParcelle typeParcelle;
 
-                foreach (var ligne in lignes)
+                //unites.Clear();
+                for (var l = 0; l < 10 && bordSud;)
                 {
+                    var ligne = lignes[l];
                     colonne = ligne.Split(':');
-                    foreach (var chiffre in colonne)
+                    for (var c = 0; c < 10 && bordEst; c++)
                     {
-                        frontier = 0;
-                        unite = Convert.ToInt32(chiffre);
-                        zero = false;
+                        unites.Add(new Unite(l, c));
+                        bordEst = bordSud = bordOuest = bordNord = false;
+                        var chiffre = colonne[c];
+                        nombre = Convert.ToInt32(chiffre);
 
-                        if (unite > (int)SensFrontiere.Mer)
+                        if (nombre >= (int)SensFrontiere.Mer)
                         {
                             typeParcelle = Parcelle.TypeParcelle.Mer;
-                            unite -= (int)SensFrontiere.Mer;
+                            nombre -= (int)SensFrontiere.Mer;
                         }
-                        else if (unite > (int)SensFrontiere.Foret)
+                        else if (nombre >= (int)SensFrontiere.Foret)
                         {
                             typeParcelle = Parcelle.TypeParcelle.Foret;
-                            unite -= (int)SensFrontiere.Foret;
+                            nombre -= (int)SensFrontiere.Foret;
                         }
 
-                        if (unite == 10)
-                            Console.WriteLine("");
-
-                        if (Valid(unite - (int)SensFrontiere.Est, out zero) && frontier < unite)
-                            frontier += (int)SensFrontiere.Est;
-                        if (!zero && Valid(unite - (int)SensFrontiere.Sud, out zero) && frontier < unite)
-                            frontier += (int)SensFrontiere.Sud;
-                        if (!zero && Valid(unite - (int)SensFrontiere.Ouest, out zero) && frontier < unite)
-                            frontier += (int)SensFrontiere.Ouest;
-                        if (!zero && Valid(unite - (int)SensFrontiere.Nord, out zero) && frontier < unite)
-                            frontier += (int)SensFrontiere.Nord;
-
-                        /*switch (unite)
+                        if (nombre >= (int)SensFrontiere.Est)
                         {
-                            case (int)SensFrontiere.Est:
-                                frontier = (int)SensFrontiere.Est;
-                                break;
+                            nombre -= (int)SensFrontiere.Est;
+                            bordEst = true;
+                        }
 
-                            case (int)SensFrontiere.Sud:
-                                frontier = (int)SensFrontiere.Sud;
-                                break;
+                        if (nombre >= (int)SensFrontiere.Sud)
+                        {
+                            nombre -= (int)SensFrontiere.Sud;
+                            bordSud = true;
+                        }
+                        if (nombre >= (int)SensFrontiere.Ouest)
+                        {
+                            nombre -= (int)SensFrontiere.Ouest;
+                            bordOuest = true;
+                        }
 
-                            case (int)SensFrontiere.Ouest:
-                                frontier = (int)SensFrontiere.Ouest;
-                                break;
+                        if (nombre >= (int)SensFrontiere.Nord)
+                        {
+                            nombre -= (int)SensFrontiere.Nord;
+                            bordNord = true;
+                        }
+                        if (bordEst)
+                        {
+                            cPrevious=c;
+                        }
+                        if (bordEst && bordSud)
+                        {
 
-                            case (int)SensFrontiere.Nord:
-                                frontier = (int)SensFrontiere.Nord;
-                                break;
-
-                            default:
-                                if (Valid(unite - (int)SensFrontiere.Est))
-                                    frontier += (int)SensFrontiere.Est;
-                                if (Valid(unite - (int)SensFrontiere.Sud))
-                                    frontier += (int)SensFrontiere.Sud;
-                                if (Valid(unite - (int)SensFrontiere.Ouest))
-                                    frontier += (int)SensFrontiere.Ouest;
-                                if (Valid(unite - (int)SensFrontiere.Nord))
-                                    frontier += (int)SensFrontiere.Nord;
-                                break;
-                        }*/
-
-                        if (unite != frontier)
-                            Console.WriteLine(frontier);
+                        }
+                        // Trouver à quelle Parcelle ça appartient ? -> A chaque frontière EST on saute de ligne
+                        // Trouver ces coordonnées ?
+                        // Verifier chaque frontières Est et le mettre dans "parcelles[0]"-> parcelle n°1, "parcelles[1]"-> parcelle n°2
+                        
                     }
                 }
+                // parcelles.Add(new Parcelle(typeParcelle, unites));
 
-                return carte;
+                return new Carte(parcelles.ToArray());
             }
             catch (Exception e)
             {
@@ -131,16 +125,43 @@ namespace Rhum_de_Guybrush
         /// Coder une carte claire afin d’obtenir une carte chiffrée.
         /// </summary>
         /// <param name="carte"></param>
-        public static void Encodage(string chemin)
+        public static void Encodage(Carte carte)
         {
+            int[][] tab = new int[10][];
+            for (int i = 0; i < tab.Length; i++)
+                tab[i] = new int[10];
+
+            for (int i = 0; i < carte.Parcelles.Length; i++)
+            {
+                var parcelle = carte.Parcelles[i];
+
+                if (parcelle != null)
+                    foreach (var unite in parcelle.Unites)
+                    {
+                        int sensFrontier = 0;
+
+                        foreach (var sousUnite in parcelle.Unites)
+                        {
+                            if (unite.X + 1 == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Est;
+                            if (unite.X - 1 == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Ouest;
+                            if (unite.Y + 1 == sousUnite.Y)
+                                sensFrontier += (int)SensFrontiere.Sud;
+                            if (unite.Y - 1 == sousUnite.Y)
+                                sensFrontier += (int)SensFrontiere.Nord;
+                        }
+
+                        if (parcelle.Type == Parcelle.TypeParcelle.Mer)
+                            sensFrontier -= (int)SensFrontiere.Nord;
+
+                        tab[unite.X][unite.Y] = sensFrontier;
+                    }
+            }
+
             try
             {
-                StreamReader fichierClair = new StreamReader(chemin);
-
-                
-                fichierClair.Close();
-
-                StreamWriter fichierChiffre = new StreamWriter(Path.ChangeExtension(chemin, ".chiffre"));
+                StreamWriter fichierChiffre = new StreamWriter(carte.Nom + ".chiffre");
 
                 fichierChiffre.Flush();
                 fichierChiffre.Close();
@@ -151,20 +172,6 @@ namespace Rhum_de_Guybrush
                 Console.WriteLine(e.Message);
                 return;
             }
-        }
-
-        private static bool Valid(int num, out bool zero)
-        {
-            zero = false;
-            if (num == 0)
-            {
-                zero = true;
-                return true;
-            }
-            else if (num == 1 || num % 2 == 0)
-                return true;
-            else
-                return false;
         }
         #endregion
     }

@@ -18,11 +18,10 @@ namespace Rhum_de_Guybrush
         #endregion
 
         #region Attributs
-        private char nom;
         // id => c
         private TypeParcelle type;
         // type => Normal
-        private Unite[] unites;
+        private List<Unite> unites;
         /*
          * (0,0) => Vrai, (0,1) => Vrai, (0,2) => Vrai
          * (1,0) => Vrai, (1,1) => Vrai, (1,2) => Faux
@@ -32,21 +31,28 @@ namespace Rhum_de_Guybrush
         #endregion
 
         #region Accesseur
-        public char Nom => nom;
         public TypeParcelle Type => type;
-        public Unite[] Unites => unites;
+        public IReadOnlyList<Unite> Unites => unites;
         #endregion
 
         #region Constructeur
-        public Parcelle(TypeParcelle type, Unite[] unites)
+        public Parcelle(TypeParcelle type, List<Unite> unites)
         {
             this.type = type;
             this.unites = unites;
         }
+        public Parcelle(TypeParcelle type)
+        {
+            this.type = type;
+            this.unites = new List<Unite>();
+        }
         #endregion
 
         #region Méthodes
-        public long TailleTotal() => Unites.Count();
+        public void Ajouter(Unite unite) => unites.Add(unite);
+        public void Supprimer(int index) => unites.RemoveAt(index);
+
+        public long TailleTotal() => Unites.Count;
 
         public long TailleMoyenne()
         {
