@@ -45,20 +45,20 @@ namespace Rhum_de_Guybrush
                 string[] lignes = texte.Split('|', StringSplitOptions.RemoveEmptyEntries);
                 string[] colonne;
                 int nombre,cPrevious;
-                bool bordEst = false, bordSud=false, bordOuest=false, bordNord=false;
+                bool bordureEst = false, bordureSud=false, bordureOuest=false, bordureNord=false;
                 List<Parcelle> parcelles = new List<Parcelle>();
                 List<Unite> unites = new List<Unite>();
                 Parcelle.TypeParcelle typeParcelle;
 
                 //unites.Clear();
-                for (var l = 0; l < 10 && bordSud;)
+                for (var l = 0; l < 10 && bordureSud;)
                 {
                     var ligne = lignes[l];
                     colonne = ligne.Split(':');
-                    for (var c = 0; c < 10 && bordEst; c++)
+                    for (var c = 0; c < 10 && bordureEst; c++)
                     {
                         unites.Add(new Unite(l, c));
-                        bordEst = bordSud = bordOuest = bordNord = false;
+                        bordureEst = bordureSud = bordureOuest = bordureNord = false;
                         var chiffre = colonne[c];
                         nombre = Convert.ToInt32(chiffre);
 
@@ -76,30 +76,30 @@ namespace Rhum_de_Guybrush
                         if (nombre >= (int)SensFrontiere.Est)
                         {
                             nombre -= (int)SensFrontiere.Est;
-                            bordEst = true;
+                            bordureEst = true;
                         }
 
                         if (nombre >= (int)SensFrontiere.Sud)
                         {
                             nombre -= (int)SensFrontiere.Sud;
-                            bordSud = true;
+                            bordureSud = true;
                         }
                         if (nombre >= (int)SensFrontiere.Ouest)
                         {
                             nombre -= (int)SensFrontiere.Ouest;
-                            bordOuest = true;
+                            bordureOuest = true;
                         }
 
                         if (nombre >= (int)SensFrontiere.Nord)
                         {
                             nombre -= (int)SensFrontiere.Nord;
-                            bordNord = true;
+                            bordureNord = true;
                         }
-                        if (bordEst)
+                        if (bordureEst)
                         {
                             cPrevious=c;
                         }
-                        if (bordEst && bordSud)
+                        if (bordureEst && bordureSud)
                         {
 
                         }
