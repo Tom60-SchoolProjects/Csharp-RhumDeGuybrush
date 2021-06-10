@@ -11,9 +11,9 @@ namespace Rhum_de_Guybrush
         #region Enumerations
         public enum TypeParcelle
         {
-            Normal,
-            Mer,
-            Foret,
+            Normal = 0,
+            Foret = 32,
+            Mer = 64,
         }
         #endregion
 

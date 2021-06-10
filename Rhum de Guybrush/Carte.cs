@@ -61,14 +61,14 @@ namespace Rhum_de_Guybrush
                             if (parcellesPlantable[num] == null)
                                 parcellesPlantable[num] = new Parcelle(typeDeParcelle);
 
-                            parcellesPlantable[num].Ajouter(new Unite(l, c));
+                            parcellesPlantable[num].Ajouter(new Unite(c, l));
                             break;
                     }
 
                     if (parcelles[num] == null)
                         parcelles[num] = new Parcelle(typeDeParcelle);
 
-                    parcelles[num].Ajouter(new Unite(l, c));
+                    parcelles[num].Ajouter(new Unite(c, l));
                     c++;
                 }
                 l++;
@@ -94,7 +94,7 @@ namespace Rhum_de_Guybrush
                 if (parcelle != null)
                     foreach (var unite in parcelle.Unites)
                     {
-                        tab[unite.X][unite.Y] = name;
+                        tab[unite.Y][unite.X] = name;
                     }
             }
 
@@ -102,20 +102,18 @@ namespace Rhum_de_Guybrush
             {
                 foreach(var c in l)
                 {
-                    if (typeDeParcelle = Parcelle.TypeParcelle.Mer)
+                    switch (c)
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write("{0}",c);
+                        case 'M':
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+
+                        case 'F':
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
                     }
-                    if (typeDeParcelle = Parcelle.TypeParcelle.Foret)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("{0}",c);
-                    }
-                    if (typeDeParcelle = Parcelle.TypeParcelle.Normal)
-                    {
-                        Console.Write("{0}",c);
-                    }
+
+                    Console.Write("{0}", c);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine();
@@ -133,7 +131,7 @@ namespace Rhum_de_Guybrush
                 {
                     Console.WriteLine($"PARCELLE {nom} - {parcelle.Taille} unites");
                     foreach (var unite in parcelle.Unites)
-                        Console.Write($"({unite.X},{unite.Y})\t");
+                        Console.Write($"({unite.Y},{unite.X})\t");
                     Console.WriteLine(Environment.NewLine);
                 }
             }

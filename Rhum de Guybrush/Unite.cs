@@ -3,7 +3,7 @@
     public class Unite
     {
         #region Attributs
-        private int x;
+        private readonly int x;
         private int y;
         #endregion
 

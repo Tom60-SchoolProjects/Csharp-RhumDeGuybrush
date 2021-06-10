@@ -128,9 +128,14 @@ namespace Rhum_de_Guybrush
         public static void Encodage(Carte carte)
         {
             int[][] tab = new int[10][];
+            StreamWriter fichierChiffre = null;
+            bool debut;
+
+            // Initialisation des colognes du tableau
             for (int i = 0; i < tab.Length; i++)
                 tab[i] = new int[10];
 
+            // Calcul des fontier et stocke dans le tablea
             for (int i = 0; i < carte.Parcelles.Length; i++)
             {
                 var parcelle = carte.Parcelles[i];
@@ -140,37 +145,53 @@ namespace Rhum_de_Guybrush
                     {
                         int sensFrontier = 0;
 
-                        foreach (var sousUnite in parcelle.Unites)
+                        foreach (var sousUnite in parcelle.Unites) // 1,1
                         {
-                            if (unite.X + 1 == sousUnite.X)
-                                sensFrontier += (int)SensFrontiere.Est;
-                            if (unite.X - 1 == sousUnite.X)
-                                sensFrontier += (int)SensFrontiere.Ouest;
-                            if (unite.Y + 1 == sousUnite.Y)
-                                sensFrontier += (int)SensFrontiere.Sud;
-                            if (unite.Y - 1 == sousUnite.Y)
-                                sensFrontier += (int)SensFrontiere.Nord;
+                            // Y = Ligne, X = Cologne
+                            if (unite.Y == sousUnite.Y && unite.X + 1 == sousUnite.X) // 1.2
+                                sensFrontier += (int)SensFrontiere.Est; // 8
+                            if (unite.Y == sousUnite.Y && unite.X - 1 == sousUnite.X) // 1,0
+                                sensFrontier += (int)SensFrontiere.Ouest; // 2
+                            if (unite.Y + 1 == sousUnite.Y && unite.X == sousUnite.X) // 2.1
+                                sensFrontier += (int)SensFrontiere.Sud; // 4
+                            if (unite.Y - 1 == sousUnite.Y && unite.X == sousUnite.X) //0,1
+                                sensFrontier += (int)SensFrontiere.Nord; // 1
                         }
 
-                        if (parcelle.Type == Parcelle.TypeParcelle.Mer)
-                            sensFrontier -= (int)SensFrontiere.Nord;
-
-                        tab[unite.X][unite.Y] = sensFrontier;
+                        sensFrontier = ((int)SensFrontiere.Est + (int)SensFrontiere.Ouest + (int)SensFrontiere.Sud + (int)SensFrontiere.Nord) - sensFrontier;
+                        sensFrontier += (int)parcelle.Type;
+                        tab[unite.Y][unite.X] = sensFrontier;
                     }
             }
 
+            // Convertion du tableau dans le ficher chiffre
             try
             {
-                StreamWriter fichierChiffre = new StreamWriter(carte.Nom + ".chiffre");
+                fichierChiffre = new StreamWriter(carte.Nom + ".chiffre");
 
-                fichierChiffre.Flush();
-                fichierChiffre.Close();
+                foreach (var l in tab)
+                {
+                    debut = true;
+                    foreach (var c in l)
+                    {
+                        if (!debut)
+                            fichierChiffre.Write(':');
+                        fichierChiffre.Write(c);
+                        debut = false;
+                    }
+                    fichierChiffre.Write('|');
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Échec du chiffrement de la carte");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Échec du chiffrement de la carte");
+                Console.WriteLine("Erreur : {0}", e.Message);
                 return;
+            }
+            finally
+            {
+                if (fichierChiffre != null)
+                    fichierChiffre.Close(); // fermeture du fichier
             }
         }
         #endregion
