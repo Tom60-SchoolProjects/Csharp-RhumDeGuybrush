@@ -12,6 +12,7 @@ namespace Rhum_de_Guybrush
         #region Attributs
         private string nom;
         private Parcelle[] parcelles;
+        private Parcelle[] parcellesPlantable;
         #endregion
 
         #region Accesseur
@@ -30,7 +31,9 @@ namespace Rhum_de_Guybrush
             nom = Path.GetFileNameWithoutExtension(chemin);
             StreamReader fichierClair = new StreamReader(chemin);
             Parcelle.TypeParcelle typeDeParcelle;
-            parcelles = new Parcelle[2 + 'z' - 'a'];
+
+            parcelles = new Parcelle['z' - 'a' + 2];
+            parcellesPlantable = new Parcelle['z' - 'a'];
             int l = 0;
             int c;
             int num;
@@ -45,15 +48,20 @@ namespace Rhum_de_Guybrush
                     {
                         case 'M':
                             typeDeParcelle = Parcelle.TypeParcelle.Mer;
-                            num = 0;
+                            num = parcellesPlantable.Length + 0;
                             break;
                         case 'F':
                             typeDeParcelle = Parcelle.TypeParcelle.Foret;
-                            num = 1;
+                            num = parcellesPlantable.Length + 1;
                             break;
                         default:
                             typeDeParcelle = Parcelle.TypeParcelle.Normal;
-                            num = 2 + lettre - 'a';
+                            num = lettre - 'a';
+
+                            if (parcellesPlantable[num] == null)
+                                parcellesPlantable[num] = new Parcelle(typeDeParcelle);
+
+                            parcellesPlantable[num].Ajouter(new Unite(l, c));
                             break;
                     }
 
@@ -102,9 +110,9 @@ namespace Rhum_de_Guybrush
 
         public void AffichageList()
         {
-            for (int i = 0; i < parcelles.Length; i++)
+            for (int i = 0; i < parcellesPlantable.Length; i++)
             {
-                var parcelle = parcelles[i];
+                var parcelle = parcellesPlantable[i];
                 char nom = ObtenirNom(i);
 
                 if (parcelle != null)
@@ -121,11 +129,13 @@ namespace Rhum_de_Guybrush
         {
             List<Parcelle> resultat = new List<Parcelle>();
 
-            Console.WriteLine("Parcelles de taille supérieure à " + taille);
-            for (int i = 0; i < parcelles.Length; i++)
+            Console.WriteLine($"Parcelles de taille supérieure à {taille} : ");
+            for (int i = 0; i < parcellesPlantable.Length; i++)
             {
-                var parcelle = parcelles[i];
-                char name = ObtenirNom(i);
+                var parcelle = parcellesPlantable[i];
+                if (parcelle == null)
+                    continue;
+                char nom = ObtenirNom(i);
 
                 if (parcelle.Taille >= taille)
                 {
@@ -143,12 +153,8 @@ namespace Rhum_de_Guybrush
         public int TailleParcelle(char nom)
         {
             int taille = 0;
-            Parcelle parcelle = nom switch
-            {
-                'M' => parcelles[0],
-                'F' => parcelles[1],
-                _ => parcelles[nom - 'a' + 2],
-            };
+            int test = nom - 'a';
+            Parcelle parcelle = parcellesPlantable[nom - 'a'];
 
             if (parcelle == null)
                 Console.WriteLine($"Parcelle {nom} : inexistante");
@@ -159,12 +165,12 @@ namespace Rhum_de_Guybrush
             return taille;
         }
 
-        public long TailleMoyenne()
+        public double TailleMoyenne()
         {
-            int moyenne = 0;
+            double moyenne = 0;
             int nbParcelles = 0;
 
-            foreach (var parcelle in parcelles)
+            foreach (var parcelle in parcellesPlantable)
                 if (parcelle != null)
                 {
                     moyenne += parcelle.Taille;
@@ -172,6 +178,8 @@ namespace Rhum_de_Guybrush
                 }
 
             moyenne /= nbParcelles;
+
+            moyenne = Math.Round(moyenne, 2);
 
             Console.WriteLine("Aire moyenne : " + moyenne);
 
@@ -181,9 +189,10 @@ namespace Rhum_de_Guybrush
         private static char ObtenirNom(int i)
         {
             char nom = (char)('a' + i);
-            if (i == 0)
+
+            if (i == 'z' - 'a' + 0)
                 nom = 'M';
-            else if (i == 1)
+            else if (i == 'z' - 'a' + 1)
                 nom = 'F';
             return nom;
         }
