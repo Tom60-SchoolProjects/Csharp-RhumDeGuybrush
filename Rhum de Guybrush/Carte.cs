@@ -94,7 +94,7 @@ namespace Rhum_de_Guybrush
             {
                 foreach(var c in l)
                 {
-                    Console.Write("{0}:",c);
+                    Console.Write("{0}",c);
                 }
                 Console.WriteLine();
             }
@@ -108,25 +108,79 @@ namespace Rhum_de_Guybrush
                 char nom = ObtenirNom(i);
 
                 if (parcelle != null)
-                    Console.WriteLine($"PARCELLE {nom} - {parcelle.TailleTotal()} unites");
-            }
-        }
-
-        public void Recherche(long taille)
-        {
-            Console.WriteLine("Parcelles de taille supérieure à " + taille);
-            foreach (var parcelle in parcelles)
-            {
-                if (parcelle.TailleTotal() >= taille)
                 {
-
+                    Console.WriteLine($"PARCELLE {nom} - {parcelle.Taille} unites");
+                    foreach (var unite in parcelle.Unites)
+                        Console.Write($"({unite.X},{unite.Y})\t");
+                    Console.WriteLine(Environment.NewLine);
                 }
             }
         }
 
-        private char ObtenirNom(int i)
+        public IReadOnlyList<Parcelle> Recherche(long taille)
         {
-            char nom = (char)(i - 2 + 'a');
+            List<Parcelle> resultat = new List<Parcelle>();
+
+            Console.WriteLine("Parcelles de taille supérieure à " + taille);
+            for (int i = 0; i < parcelles.Length; i++)
+            {
+                var parcelle = parcelles[i];
+                char name = ObtenirNom(i);
+
+                if (parcelle.Taille >= taille)
+                {
+                    resultat.Add(parcelle);
+                    Console.WriteLine($"Parcelle {nom} : {parcelle.Taille} unites");
+                }
+            }
+
+            if (resultat.Count == 0)
+                Console.WriteLine("Aucune parcelle");
+
+            return resultat;
+        }
+
+        public int TailleParcelle(char nom)
+        {
+            int taille = 0;
+            Parcelle parcelle = nom switch
+            {
+                'M' => parcelles[0],
+                'F' => parcelles[1],
+                _ => parcelles[nom - 'a' + 2],
+            };
+
+            if (parcelle == null)
+                Console.WriteLine($"Parcelle {nom} : inexistante");
+            else
+                taille = parcelle.Taille;
+
+            Console.WriteLine($"Taille de la parcelle {nom} : {taille} unites" + Environment.NewLine);
+            return taille;
+        }
+
+        public long TailleMoyenne()
+        {
+            int moyenne = 0;
+            int nbParcelles = 0;
+
+            foreach (var parcelle in parcelles)
+                if (parcelle != null)
+                {
+                    moyenne += parcelle.Taille;
+                    nbParcelles++;
+                }
+
+            moyenne /= nbParcelles;
+
+            Console.WriteLine("Aire moyenne : " + moyenne);
+
+            return moyenne;
+        }
+
+        private static char ObtenirNom(int i)
+        {
+            char nom = (char)('a' + i);
             if (i == 0)
                 nom = 'M';
             else if (i == 1)

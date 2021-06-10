@@ -33,6 +33,7 @@ namespace Rhum_de_Guybrush
         #region Accesseur
         public TypeParcelle Type => type;
         public IReadOnlyList<Unite> Unites => unites;
+        public int Taille => Unites.Count;
         #endregion
 
         #region Constructeur
@@ -51,19 +52,6 @@ namespace Rhum_de_Guybrush
         #region Méthodes
         public void Ajouter(Unite unite) => unites.Add(unite);
         public void Supprimer(int index) => unites.RemoveAt(index);
-
-        public long TailleTotal() => Unites.Count;
-
-        public long TailleMoyenne()
-        {
-            int total;
-            for (var i = 0; i < Parcelle.count; i++)
-            {
-                total += Parcelle[i].TailleTotal;
-            }
-            total = total / Parcelle.count
-            return total;
-        }
         #endregion
     }
 }
