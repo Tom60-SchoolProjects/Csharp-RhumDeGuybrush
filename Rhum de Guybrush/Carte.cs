@@ -102,7 +102,21 @@ namespace Rhum_de_Guybrush
             {
                 foreach(var c in l)
                 {
-                    Console.Write("{0}",c);
+                    if (typeDeParcelle = Parcelle.TypeParcelle.Mer)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write("{0}",c);
+                    }
+                    if (typeDeParcelle = Parcelle.TypeParcelle.Foret)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("{0}",c);
+                    }
+                    if (typeDeParcelle = Parcelle.TypeParcelle.Normal)
+                    {
+                        Console.Write("{0}",c);
+                    }
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine();
             }
