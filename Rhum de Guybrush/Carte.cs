@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Rhum_de_Guybrush
 {
+    /// <summary>
+    /// Classe Carte: Modélise une carte.
+    /// </summary>
     public class Carte
     {
         #region Attributs
