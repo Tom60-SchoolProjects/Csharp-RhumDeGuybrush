@@ -8,17 +8,40 @@ namespace Rhum_de_Guybrush
     public class Carte
     {
         #region Attributs
-        private readonly string nom;
-        private readonly Parcelle[] parcelles;
+            
+        /// <summary>
+        /// Nom de la carte
+        /// </summary>
+        private string nom;
+        
+        /// <summary>
+        /// Tableau contenant les parcelles qui composent une carte
+        /// </summary>
+        private Parcelle[] parcelles;
+        
+        /// <summary>
+        /// tableau contenant les parcelles cultivables qui composent une carte
+        /// </summary>
         private readonly Parcelle[] parcellesCultivable;
         #endregion
 
         #region Accesseur
+        /// <summary>
+        /// Accesseur en lecture de l'attribut nom.
+        /// </summary>
+        /// <value>Le nom de la carte.</value>
         public string Nom => nom;
+        /// <summary>
+        /// Accesseur en lecture de la liste parcelles.
+        /// </summary>
         public Parcelle[] Parcelles => parcelles;
         #endregion
 
         #region Constructeur
+        /// <summary>
+        /// Constructeur de la classe <see cref="Carte"/>.
+        /// </summary>
+        /// <param name="parcelles">liste des parcelles de la carte.</param>
         public Carte(Parcelle[] parcelles)
         {
             this.parcelles = parcelles;
@@ -28,7 +51,10 @@ namespace Rhum_de_Guybrush
             pList = pList.FindAll(x => x.Type == Parcelle.TypeParcelle.Normal);
             parcellesCultivable = pList.ToArray();
         }
-
+        /// <summary>
+        /// Constructeur de la classe <see cref="Carte"/>.
+        /// </summary>
+        /// <param name="parcelles">Chemin vers l'accesseur de parcelle.</param>
         public Carte(string chemin)
         {
             StreamReader fichierClair = null;
