@@ -13,7 +13,7 @@ namespace Rhum_de_Guybrush
     {
         #region Enumerations
         /// <summary>
-        /// Permettre d'identifier le type d'une parcelle.
+        /// Enumération des types de parcelle.
         /// </summary>
         public enum TypeParcelle
         {
