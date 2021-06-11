@@ -6,7 +6,7 @@ using System.Linq;
 namespace Rhum_de_Guybrush
 {
     /// <summary>
-    /// Classe Codage: modélise le codage et décodage d'une carte
+    /// Classe Codage: modélise le codage et décodage d'une carte.
     /// </summary>
     public static class Codage
     {
@@ -27,7 +27,7 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Lire une carte chiffrée et la déchiffrer en carte claire.
         /// </summary>
-        /// <param name="chemin">Chemin vers le fichier .chiffre.</param>
+        /// <param name="chemin">Chemin d'accès au fichier texte chiffré qui contient les parcelles.</param>
         /// <returns>La carte déchiffrée.</returns>
         public static Carte Decodage(string chemin)
         {
@@ -90,61 +90,11 @@ namespace Rhum_de_Guybrush
                     fichierChiffre.Close(); // fermeture du fichier
             }
         }
-        /// <summary>
-        /// Trouver les unités d'une parcelle
-        /// </summary>
-        /// <param name="tab">Carte chiffrée</param>
-        /// <param name="debut">Position de la 1ere unite</param>
-        /// <param name="typeParcelle">Type de la parcelle</param>
-        /// <returns>La liste des unités d'une parcelle</returns>
-        private static List<Unite> TrouverUnites(ref int[][] tab, Unite debut, out Parcelle.TypeParcelle typeParcelle)
-        {
-            int frontier = tab[debut.Y][debut.X];
-            List<Unite> unites = new List<Unite>();
-            typeParcelle = Parcelle.TypeParcelle.Normal;
-            tab[debut.Y][debut.X] = 0;
-
-            if (frontier != 0) // Traité l'unité s'il n'a pas déjà été traité
-            {
-                unites.Add(debut);
-
-                // Récupérer la frontier
-                if (frontier >= (int)Parcelle.TypeParcelle.Mer)
-                    typeParcelle = Parcelle.TypeParcelle.Mer;
-                else if (frontier >= (int)Parcelle.TypeParcelle.Foret)
-                    typeParcelle = Parcelle.TypeParcelle.Foret;
-
-                frontier -= (int)typeParcelle;
-
-                // Ajouter les unités adjacentes
-                if (frontier >= (int)SensFrontiere.Est)
-                    frontier -= (int)SensFrontiere.Est;
-                else
-                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X + 1, debut.Y), out _));
-
-                if (frontier >= (int)SensFrontiere.Sud)
-                    frontier -= (int)SensFrontiere.Sud;
-                else
-                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y + 1), out _));
-
-                if (frontier >= (int)SensFrontiere.Ouest)
-                    frontier -= (int)SensFrontiere.Ouest;
-                else
-                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X - 1, debut.Y), out _));
-
-                if (frontier >= (int)SensFrontiere.Nord)
-                    frontier -= (int)SensFrontiere.Nord;
-                else
-                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y - 1), out _));
-            }
-
-            return unites;
-        }
 
         /// <summary>
         /// Coder une carte claire afin d’obtenir une carte chiffrée.
         /// </summary>
-        /// <param name="carte"></param>
+        /// <param name="carte">Carte.</param>
         public static void Encodage(Carte carte)
         {
             int[][] tab = new int[10][];
@@ -212,6 +162,57 @@ namespace Rhum_de_Guybrush
                 if (fichierClair != null)
                     fichierClair.Close(); // fermeture du fichier
             }
+        }
+
+        /// <summary>
+        /// Trouver les unités d'une parcelle.
+        /// </summary>
+        /// <param name="tab">Carte chiffrée.</param>
+        /// <param name="debut">Position de la 1ere unite.</param>
+        /// <param name="typeParcelle">Type de la parcelle.</param>
+        /// <returns>La liste des unités d'une parcelle.</returns>
+        private static List<Unite> TrouverUnites(ref int[][] tab, Unite debut, out Parcelle.TypeParcelle typeParcelle)
+        {
+            int frontier = tab[debut.Y][debut.X];
+            List<Unite> unites = new List<Unite>();
+            typeParcelle = Parcelle.TypeParcelle.Normal;
+            tab[debut.Y][debut.X] = 0;
+
+            if (frontier != 0) // Traité l'unité s'il n'a pas déjà été traité
+            {
+                unites.Add(debut);
+
+                // Récupérer la frontier
+                if (frontier >= (int)Parcelle.TypeParcelle.Mer)
+                    typeParcelle = Parcelle.TypeParcelle.Mer;
+                else if (frontier >= (int)Parcelle.TypeParcelle.Foret)
+                    typeParcelle = Parcelle.TypeParcelle.Foret;
+
+                frontier -= (int)typeParcelle;
+
+                // Ajouter les unités adjacentes
+                if (frontier >= (int)SensFrontiere.Est)
+                    frontier -= (int)SensFrontiere.Est;
+                else
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X + 1, debut.Y), out _));
+
+                if (frontier >= (int)SensFrontiere.Sud)
+                    frontier -= (int)SensFrontiere.Sud;
+                else
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y + 1), out _));
+
+                if (frontier >= (int)SensFrontiere.Ouest)
+                    frontier -= (int)SensFrontiere.Ouest;
+                else
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X - 1, debut.Y), out _));
+
+                if (frontier >= (int)SensFrontiere.Nord)
+                    frontier -= (int)SensFrontiere.Nord;
+                else
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y - 1), out _));
+            }
+
+            return unites;
         }
         #endregion
     }

@@ -7,11 +7,11 @@ namespace Rhum_de_Guybrush
     {
         #region Attributs
         /// <summary>
-        /// Coordonnée X de l'unitée
+        /// Coordonnée X de l'unitée.
         /// </summary>
         private readonly int x;
         /// <summary>
-        /// Coordonnée Y de l'unitée
+        /// Coordonnée Y de l'unitée.
         /// </summary>
         private readonly int y;
         #endregion
@@ -29,7 +29,7 @@ namespace Rhum_de_Guybrush
 
         #region Constructeur
         /// <summary>
-        /// Constructeur de la classe <see cref="Unite"/>
+        /// Constructeur de la classe <see cref="Unite"/>.
         /// </summary>
         /// <param name="x">Coordonnée X de l'unitée.</param>
         /// <param name="y">Coordonnée Y de l'unitée.</param>

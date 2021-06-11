@@ -1,0 +1,109 @@
+\hypertarget{class_rhum__de___guybrush_1_1_codage}{}\doxysection{Référence de la classe Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage}
+\label{class_rhum__de___guybrush_1_1_codage}\index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
+
+
+Classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage}{Codage}}\+: modélise le codage et décodage d\textquotesingle{}une carte.  
+
+
+\doxysubsection*{Types publics}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a5089e268b3a7d2c41de312c8caff00cc}{Sens\+Frontiere}} \{ {\bfseries Nord} = 1
+, {\bfseries Ouest} = 2
+, {\bfseries Sud} = 4
+, {\bfseries Est} = 8
+ \}
+\begin{DoxyCompactList}\small\item\em Enumération du sens des frontières et des unités spéciales. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a6a335a06661e470f1e5a15094891a174}{Decodage}} (string chemin)
+\begin{DoxyCompactList}\small\item\em Lire une carte chiffrée et la déchiffrer en carte claire. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}{Encodage}} (\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} carte)
+\begin{DoxyCompactList}\small\item\em Coder une carte claire afin d’obtenir une carte chiffrée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres privées statiques}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{class_rhum__de___guybrush_1_1_unite}{Unite}} $>$ \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_ac953569f2735f4ec287ec436b519098c}{Trouver\+Unites}} (ref int\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} tab, \mbox{\hyperlink{class_rhum__de___guybrush_1_1_unite}{Unite}} debut, out \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle_a3e7ba5d88c80c0199897bc0ccb1321b8}{Parcelle.\+Type\+Parcelle}} type\+Parcelle)
+\begin{DoxyCompactList}\small\item\em Trouver les unités d\textquotesingle{}une parcelle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage}{Codage}}\+: modélise le codage et décodage d\textquotesingle{}une carte. 
+
+
+
+\doxysubsection{Documentation des énumérations membres}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_a5089e268b3a7d2c41de312c8caff00cc}\label{class_rhum__de___guybrush_1_1_codage_a5089e268b3a7d2c41de312c8caff00cc}} 
+\index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!SensFrontiere@{SensFrontiere}}
+\index{SensFrontiere@{SensFrontiere}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
+\doxysubsubsection{\texorpdfstring{SensFrontiere}{SensFrontiere}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a5089e268b3a7d2c41de312c8caff00cc}{Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Sens\+Frontiere}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumération du sens des frontières et des unités spéciales. 
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_a6a335a06661e470f1e5a15094891a174}\label{class_rhum__de___guybrush_1_1_codage_a6a335a06661e470f1e5a15094891a174}} 
+\index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!Decodage@{Decodage}}
+\index{Decodage@{Decodage}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
+\doxysubsubsection{\texorpdfstring{Decodage()}{Decodage()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Decodage (\begin{DoxyParamCaption}\item[{string}]{chemin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Lire une carte chiffrée et la déchiffrer en carte claire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chemin} & Chemin d\textquotesingle{}accès au fichier texte chiffré qui contient les parcelles.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La carte déchiffrée.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}\label{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}} 
+\index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!Encodage@{Encodage}}
+\index{Encodage@{Encodage}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
+\doxysubsubsection{\texorpdfstring{Encodage()}{Encodage()}}
+{\footnotesize\ttfamily static void Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Encodage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}}]{carte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Coder une carte claire afin d’obtenir une carte chiffrée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em carte} & \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_ac953569f2735f4ec287ec436b519098c}\label{class_rhum__de___guybrush_1_1_codage_ac953569f2735f4ec287ec436b519098c}} 
+\index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!TrouverUnites@{TrouverUnites}}
+\index{TrouverUnites@{TrouverUnites}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
+\doxysubsubsection{\texorpdfstring{TrouverUnites()}{TrouverUnites()}}
+{\footnotesize\ttfamily static List$<$\mbox{\hyperlink{class_rhum__de___guybrush_1_1_unite}{Unite}}$>$ Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Trouver\+Unites (\begin{DoxyParamCaption}\item[{ref int}]{tab\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{class_rhum__de___guybrush_1_1_unite}{Unite}}}]{debut,  }\item[{out \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle_a3e7ba5d88c80c0199897bc0ccb1321b8}{Parcelle.\+Type\+Parcelle}}}]{type\+Parcelle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Trouver les unités d\textquotesingle{}une parcelle. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab} & \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} chiffrée.\\
+\hline
+{\em debut} & Position de la 1ere unite.\\
+\hline
+{\em type\+Parcelle} & Type de la parcelle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La liste des unités d\textquotesingle{}une parcelle.
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Tom60/\+One\+Drive/\+Documents/École/\+DUT INFO 1/\+Concep Objet/\+C\#/\+Rhum de Guybrush/\+Rhum de Guybrush/Codage.\+cs\end{DoxyCompactItemize}

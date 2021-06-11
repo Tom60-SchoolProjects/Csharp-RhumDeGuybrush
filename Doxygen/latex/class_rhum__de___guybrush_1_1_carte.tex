@@ -1,0 +1,211 @@
+\hypertarget{class_rhum__de___guybrush_1_1_carte}{}\doxysection{Référence de la classe Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte}
+\label{class_rhum__de___guybrush_1_1_carte}\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+
+
+Classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}\+: modélise une carte.  
+
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a3d4912e11c5f631ebc46f4149ce379b4}{Carte}} (\mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a9b840c892ee9c1709f348a9a80cfa86c}{parcelles}})
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_aa589ef1db45f98d3d6ec4a3ac9b183cb}{Carte}} (string chemin)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a2649f42c1811dc5ebfea4bf050c91859}{Affiche}} ()
+\begin{DoxyCompactList}\small\item\em Affichage de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a0c184d9a276b2f978f999eb488495289}{Affiche\+List}} ()
+\begin{DoxyCompactList}\small\item\em Affichage de la liste des parcelles. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}} $>$ \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_ac8a13abc9e39f43939151c168d566572}{Recherche}} (long taille)
+\begin{DoxyCompactList}\small\item\em Recherche les parcelles dont la taille est supérieur à taille. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a57d99ab4ea8a08bb4414f572eccc0bff}{Taille\+Parcelle}} (char \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a940d3d48d796a2218658bb55eeb3fa54}{nom}})
+\begin{DoxyCompactList}\small\item\em Calcule la taille d\textquotesingle{}une parcelle cultivables. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_addd78d64ae7917e8ad334ce86adc0f93}{Taille\+Moyenne}} ()
+\begin{DoxyCompactList}\small\item\em Calcule la taille moyenne des parcelles cultivables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Propriétés}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a45ee5290155dc0eea18e47641b91b1b8}{Nom}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de l\textquotesingle{}attribut nom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a7188213235e43a862231343bcaf29198}{Parcelles}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Accesseur en lecture de l\textquotesingle{}attribut parcelles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a940d3d48d796a2218658bb55eeb3fa54}{nom}}
+\begin{DoxyCompactList}\small\item\em Nom de la carte. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a9b840c892ee9c1709f348a9a80cfa86c}{parcelles}}
+\begin{DoxyCompactList}\small\item\em Tableau des parcelles. \end{DoxyCompactList}\item 
+readonly \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte_a2b098a9592463aea8441ab42f995fdd5}{parcelles\+Cultivable}}
+\begin{DoxyCompactList}\small\item\em Tableau des parcelles cultivables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}\+: modélise une carte. 
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a3d4912e11c5f631ebc46f4149ce379b4}\label{class_rhum__de___guybrush_1_1_carte_a3d4912e11c5f631ebc46f4149ce379b4}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Carte@{Carte}}
+\index{Carte@{Carte}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Carte()}{Carte()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Carte (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}\mbox{[}$\,$\mbox{]}}]{parcelles }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parcelles} & Liste des parcelles.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_aa589ef1db45f98d3d6ec4a3ac9b183cb}\label{class_rhum__de___guybrush_1_1_carte_aa589ef1db45f98d3d6ec4a3ac9b183cb}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Carte@{Carte}}
+\index{Carte@{Carte}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Carte()}{Carte()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Carte (\begin{DoxyParamCaption}\item[{string}]{chemin }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chemin} & Chemin d\textquotesingle{}accès au fichier texte qui contient les parcelles.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a2649f42c1811dc5ebfea4bf050c91859}\label{class_rhum__de___guybrush_1_1_carte_a2649f42c1811dc5ebfea4bf050c91859}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Affiche@{Affiche}}
+\index{Affiche@{Affiche}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Affiche()}{Affiche()}}
+{\footnotesize\ttfamily void Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Affiche (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affichage de la carte. 
+
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a0c184d9a276b2f978f999eb488495289}\label{class_rhum__de___guybrush_1_1_carte_a0c184d9a276b2f978f999eb488495289}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!AfficheList@{AfficheList}}
+\index{AfficheList@{AfficheList}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{AfficheList()}{AfficheList()}}
+{\footnotesize\ttfamily void Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Affiche\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affichage de la liste des parcelles. 
+
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_ac8a13abc9e39f43939151c168d566572}\label{class_rhum__de___guybrush_1_1_carte_ac8a13abc9e39f43939151c168d566572}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Recherche@{Recherche}}
+\index{Recherche@{Recherche}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Recherche()}{Recherche()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}}$>$ Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Recherche (\begin{DoxyParamCaption}\item[{long}]{taille }\end{DoxyParamCaption})}
+
+
+
+Recherche les parcelles dont la taille est supérieur à taille. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em taille} & Taille des parcelles recherchées.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La liste des parcelles vérifiant le critère
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_addd78d64ae7917e8ad334ce86adc0f93}\label{class_rhum__de___guybrush_1_1_carte_addd78d64ae7917e8ad334ce86adc0f93}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!TailleMoyenne@{TailleMoyenne}}
+\index{TailleMoyenne@{TailleMoyenne}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{TailleMoyenne()}{TailleMoyenne()}}
+{\footnotesize\ttfamily double Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Taille\+Moyenne (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcule la taille moyenne des parcelles cultivables. 
+
+\begin{DoxyReturn}{Renvoie}
+La taille moyenne des parcelles cultivable.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a57d99ab4ea8a08bb4414f572eccc0bff}\label{class_rhum__de___guybrush_1_1_carte_a57d99ab4ea8a08bb4414f572eccc0bff}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!TailleParcelle@{TailleParcelle}}
+\index{TailleParcelle@{TailleParcelle}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{TailleParcelle()}{TailleParcelle()}}
+{\footnotesize\ttfamily int Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Taille\+Parcelle (\begin{DoxyParamCaption}\item[{char}]{nom }\end{DoxyParamCaption})}
+
+
+
+Calcule la taille d\textquotesingle{}une parcelle cultivables. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nom} & Nom de la parcelle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La taille d\textquotesingle{}une parcelle.
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a940d3d48d796a2218658bb55eeb3fa54}\label{class_rhum__de___guybrush_1_1_carte_a940d3d48d796a2218658bb55eeb3fa54}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!nom@{nom}}
+\index{nom@{nom}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{nom}{nom}}
+{\footnotesize\ttfamily string Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+nom\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nom de la carte. 
+
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a9b840c892ee9c1709f348a9a80cfa86c}\label{class_rhum__de___guybrush_1_1_carte_a9b840c892ee9c1709f348a9a80cfa86c}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!parcelles@{parcelles}}
+\index{parcelles@{parcelles}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{parcelles}{parcelles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}} \mbox{[}$\,$\mbox{]} Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+parcelles\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tableau des parcelles. 
+
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a2b098a9592463aea8441ab42f995fdd5}\label{class_rhum__de___guybrush_1_1_carte_a2b098a9592463aea8441ab42f995fdd5}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!parcellesCultivable@{parcellesCultivable}}
+\index{parcellesCultivable@{parcellesCultivable}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{parcellesCultivable}{parcellesCultivable}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}} \mbox{[}$\,$\mbox{]} Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+parcelles\+Cultivable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tableau des parcelles cultivables. 
+
+
+
+\doxysubsection{Documentation des propriétés}
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a45ee5290155dc0eea18e47641b91b1b8}\label{class_rhum__de___guybrush_1_1_carte_a45ee5290155dc0eea18e47641b91b1b8}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Nom@{Nom}}
+\index{Nom@{Nom}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Nom}{Nom}}
+{\footnotesize\ttfamily string Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Nom\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Accesseur en lecture de l\textquotesingle{}attribut nom. 
+
+Le nom de la carte.\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_carte_a7188213235e43a862231343bcaf29198}\label{class_rhum__de___guybrush_1_1_carte_a7188213235e43a862231343bcaf29198}} 
+\index{Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}!Parcelles@{Parcelles}}
+\index{Parcelles@{Parcelles}!Rhum\_de\_Guybrush.Carte@{Rhum\_de\_Guybrush.Carte}}
+\doxysubsubsection{\texorpdfstring{Parcelles}{Parcelles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_rhum__de___guybrush_1_1_parcelle}{Parcelle}} \mbox{[}$\,$\mbox{]} Rhum\+\_\+de\+\_\+\+Guybrush.\+Carte.\+Parcelles\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Accesseur en lecture de l\textquotesingle{}attribut parcelles. 
+
+La liste des parcelles.
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Tom60/\+One\+Drive/\+Documents/École/\+DUT INFO 1/\+Concep Objet/\+C\#/\+Rhum de Guybrush/\+Rhum de Guybrush/Carte.\+cs\end{DoxyCompactItemize}

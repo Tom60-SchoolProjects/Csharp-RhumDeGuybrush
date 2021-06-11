@@ -6,24 +6,23 @@ using System.Linq;
 namespace Rhum_de_Guybrush
 {
     /// <summary>
-    /// Classe Carte: Modélise une carte.
+    /// Classe Carte: modélise une carte.
     /// </summary>
     public class Carte
     {
         #region Attributs
-
         /// <summary>
-        /// Nom de la carte
+        /// Nom de la carte.
         /// </summary>
         private string nom;
 
         /// <summary>
-        /// Tableau contenant les parcelles qui composent une carte
+        /// Tableau des parcelles.
         /// </summary>
         private Parcelle[] parcelles;
 
         /// <summary>
-        /// tableau contenant les parcelles cultivables qui composent une carte
+        /// Tableau des parcelles cultivables.
         /// </summary>
         private readonly Parcelle[] parcellesCultivable;
         #endregion
@@ -35,8 +34,9 @@ namespace Rhum_de_Guybrush
         /// <value>Le nom de la carte.</value>
         public string Nom => nom;
         /// <summary>
-        /// Accesseur en lecture de la liste parcelles.
+        /// Accesseur en lecture de l'attribut parcelles.
         /// </summary>
+        /// <value>La liste des parcelles.</value>
         public Parcelle[] Parcelles => parcelles;
         #endregion
 
@@ -44,7 +44,7 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Constructeur de la classe <see cref="Carte"/>.
         /// </summary>
-        /// <param name="parcelles">liste des parcelles de la carte.</param>
+        /// <param name="parcelles">Liste des parcelles.</param>
         public Carte(Parcelle[] parcelles)
         {
             this.parcelles = parcelles;
@@ -54,10 +54,11 @@ namespace Rhum_de_Guybrush
             pList = pList.FindAll(x => x.Type == Parcelle.TypeParcelle.Normal);
             parcellesCultivable = pList.ToArray();
         }
+
         /// <summary>
         /// Constructeur de la classe <see cref="Carte"/>.
         /// </summary>
-        /// <param name="parcelles">Chemin vers l'accesseur de parcelle.</param>
+        /// <param name="chemin">Chemin d'accès au fichier texte qui contient les parcelles.</param>
         public Carte(string chemin)
         {
             StreamReader fichierClair = null;
@@ -133,7 +134,7 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Affichage de la carte.
         /// </summary>
-        public void Affichage()
+        public void Affiche()
         {
             char lettre = 'a';
             char[][] tab = new char[10][];
@@ -183,10 +184,11 @@ namespace Rhum_de_Guybrush
                 Console.WriteLine();
             }
         }
+
         /// <summary>
-        /// Affichage de la liste des parcelles
+        /// Affichage de la liste des parcelles.
         /// </summary>
-        public void AffichageList()
+        public void AfficheList()
         {
             char lettre = 'a';
 
@@ -213,12 +215,13 @@ namespace Rhum_de_Guybrush
                 }
             }
         }
+
         /// <summary>
-        /// Recherche les parcelles dont la taille est supérieur à la valeur donnée
+        /// Recherche les parcelles dont la taille est supérieur à taille.
         /// </summary>
-        /// <param name="taille">taille des parcelles recherchées</param>
-        /// <returns>La liste des parcelles avec une taille supérieur à celle donnée</returns>
-        public IReadOnlyList<Parcelle> Recherche(long taille)
+        /// <param name="taille">Taille des parcelles recherchées.</param>
+        /// <returns>La liste des parcelles vérifiant le critère</returns>
+        public List<Parcelle> Recherche(long taille)
         {
             List<Parcelle> resultat = new List<Parcelle>();
 
@@ -248,8 +251,9 @@ namespace Rhum_de_Guybrush
 
             return resultat;
         }
+
         /// <summary>
-        /// Calculer la taille d'une parcelle.
+        /// Calcule la taille d'une parcelle cultivables.
         /// </summary>
         /// <param name="nom">Nom de la parcelle.</param>
         /// <returns>La taille d'une parcelle.</returns>
@@ -266,10 +270,11 @@ namespace Rhum_de_Guybrush
             Console.WriteLine($"Taille de la parcelle {nom} : {taille} unites" + Environment.NewLine);
             return taille;
         }
+
         /// <summary>
-        /// Calcule la taille moyenne des parcelles cultivables
+        /// Calcule la taille moyenne des parcelles cultivables.
         /// </summary>
-        /// <returns>La taille moyenne des parcelles cultivable</returns>
+        /// <returns>La taille moyenne des parcelles cultivable.</returns>
         public double TailleMoyenne()
         {
             double moyenne = 0;
