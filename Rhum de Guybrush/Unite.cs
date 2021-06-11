@@ -1,24 +1,38 @@
 namespace Rhum_de_Guybrush
 {
+    /// <summary>
+    /// Classe Unite: modélise une unitée.
+    /// </summary>
     public class Unite
     {
         #region Attributs
+        /// <summary>
+        /// Coordonnée X de l'unitée
+        /// </summary>
         private int x;
+        /// <summary>
+        /// Coordonnée Y de l'unitée
+        /// </summary>
         private int y;
         #endregion
 
         #region Accesseur
         /// <summary>
-        /// Permettre d'accéder aux variables locales de la classe Unite.
+        /// Accesseur en lecture de l'attribut X.
         /// </summary>
         public int X => x;
+        /// <summary>
+        /// Accesseur en lecture de l'attribut Y.
+        /// </summary>
         public int Y => y;
         #endregion
 
         #region Constructeur
         /// <summary>
-        /// Permettre d'instancier un objet de type Unite.
+        /// Constructeur de la classe <see cref="Unite"/>
         /// </summary>
+        /// <param name="x">Coordonnée X de l'unitée.</param>
+        /// <param name="x">Coordonnée Y de l'unitée.</param>
         public Unite(int x, int y)
         {
             this.x = x;
