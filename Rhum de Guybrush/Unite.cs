@@ -32,7 +32,7 @@ namespace Rhum_de_Guybrush
         /// Constructeur de la classe <see cref="Unite"/>
         /// </summary>
         /// <param name="x">Coordonnée X de l'unitée.</param>
-        /// <param name="x">Coordonnée Y de l'unitée.</param>
+        /// <param name="y">Coordonnée Y de l'unitée.</param>
         public Unite(int x, int y)
         {
             this.x = x;

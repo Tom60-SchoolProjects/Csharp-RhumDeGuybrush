@@ -34,17 +34,14 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Accesseur en lecture de l'attribut Type.
         /// </summary>
-        /// <value>Type de la Parcelle.</value>
         public TypeParcelle Type => type;
         /// <summary>
         /// Accesseur en lecture de la liste unites.
         /// </summary>
-        /// <value>Liste des unités dans la Parcelle.</value>
         public IReadOnlyList<Unite> Unites => unites;
         /// <summary>
         /// Accesseur en lecture du nombre d'Unites.
         /// </summary>
-        /// <value>Taille d'une Parcelle.</value>
         public int Taille => Unites.Count;
         #endregion
 
@@ -74,10 +71,12 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Ajouter un objet de type Unite.
         /// </summary>
+        /// <param name="unite">Unitée.</param>
         public void Ajouter(Unite unite) => unites.Add(unite);
         /// <summary>
         /// Supprimer un objet de type Unite.
         /// </summary>
+        /// <param name="index">Numéro de l'unitée.</param>
         public void Supprimer(int index) => unites.RemoveAt(index);
         #endregion
     }
