@@ -10,9 +10,9 @@ namespace Rhum_de_Guybrush
     public class Carte
     {
         #region Attributs
-        private string nom;
-        private Parcelle[] parcelles;
-        private Parcelle[] parcellesPlantable;
+        private readonly string nom;
+        private readonly Parcelle[] parcelles;
+        private readonly Parcelle[] parcellesPlantable;
         #endregion
 
         #region Accesseur
@@ -24,6 +24,11 @@ namespace Rhum_de_Guybrush
         public Carte(Parcelle[] parcelles)
         {
             this.parcelles = parcelles;
+
+            // On on enléve les parcelle qui sont pas plantable et on met dans parcellesPlantable
+            var pList = parcelles.ToList();
+            pList = pList.FindAll(x => x.Type == Parcelle.TypeParcelle.Normal);
+            parcellesPlantable = pList.ToArray();
         }
 
         public Carte(string chemin)
@@ -82,6 +87,7 @@ namespace Rhum_de_Guybrush
         #region Méthodes
         public void Affichage()
         {
+            char lettre = 'a';
             char[][] tab = new char[10][];
             for (int i = 0; i < tab.Length; i++)
                 tab[i] = new char[10];
@@ -89,16 +95,22 @@ namespace Rhum_de_Guybrush
             for (int i = 0; i < parcelles.Length; i++)
             {
                 var parcelle = parcelles[i];
-                char name = ObtenirNom(i);
-
                 if (parcelle != null)
+                {
+                    char nom = parcelle.Type switch
+                    {
+                        Parcelle.TypeParcelle.Foret => 'F',
+                        Parcelle.TypeParcelle.Mer => 'M',
+                        _ => lettre++,
+                    };
                     foreach (var unite in parcelle.Unites)
                     {
-                        tab[unite.Y][unite.X] = name;
+                        tab[unite.Y][unite.X] = nom;
                     }
+                }
             }
 
-            foreach(var l in tab)
+            foreach (var l in tab)
             {
                 foreach(var c in l)
                 {
@@ -122,13 +134,20 @@ namespace Rhum_de_Guybrush
 
         public void AffichageList()
         {
+            char lettre = 'a';
             for (int i = 0; i < parcellesPlantable.Length; i++)
             {
                 var parcelle = parcellesPlantable[i];
-                char nom = ObtenirNom(i);
 
                 if (parcelle != null)
                 {
+                    char nom = parcelle.Type switch
+                    {
+                        Parcelle.TypeParcelle.Foret => 'F',
+                        Parcelle.TypeParcelle.Mer => 'M',
+                        _ => lettre++,
+                    };
+
                     Console.WriteLine($"PARCELLE {nom} - {parcelle.Taille} unites");
                     foreach (var unite in parcelle.Unites)
                         Console.Write($"({unite.Y},{unite.X})\t");
@@ -147,7 +166,7 @@ namespace Rhum_de_Guybrush
                 var parcelle = parcellesPlantable[i];
                 if (parcelle == null)
                     continue;
-                char nom = ObtenirNom(i);
+                char nom = (char)('a' + i);
 
                 if (parcelle.Taille >= taille)
                 {
@@ -196,17 +215,6 @@ namespace Rhum_de_Guybrush
             Console.WriteLine("Aire moyenne : " + moyenne);
 
             return moyenne;
-        }
-
-        private static char ObtenirNom(int i)
-        {
-            char nom = (char)('a' + i);
-
-            if (i == 'z' - 'a' + 0)
-                nom = 'M';
-            else if (i == 'z' - 'a' + 1)
-                nom = 'F';
-            return nom;
         }
         #endregion
     }

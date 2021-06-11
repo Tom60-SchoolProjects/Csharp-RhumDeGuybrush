@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rhum_de_Guybrush
 {
@@ -16,18 +14,7 @@ namespace Rhum_de_Guybrush
             Ouest = 2,
             Sud = 4,
             Est = 8,
-            Foret = 32,
-            Mer = 64,
         }
-        #endregion
-
-        #region Attributs
-        #endregion
-
-        #region Accesseur
-        #endregion
-
-        #region Constructeur
         #endregion
 
         #region Méthodes
@@ -38,87 +25,106 @@ namespace Rhum_de_Guybrush
         /// <returns></returns>
         public static Carte Decodage(string chemin)
         {
+            int[][] tab = new int[10][];
+            StreamReader fichierChiffre = null;
+            List<Parcelle> parcelles = new List<Parcelle>();
+            List<Unite> unites;
+            Parcelle.TypeParcelle typeParcelle;
+
+            // Initialisation des colognes du tableau
+            for (int i = 0; i < tab.Length; i++)
+                tab[i] = new int[10];
+
             try
             {
-                StreamReader streamReader = new StreamReader(chemin);
-                string texte = streamReader.ReadToEnd();
+                fichierChiffre = new StreamReader(chemin);
+                string texte = fichierChiffre.ReadToEnd();
                 string[] lignes = texte.Split('|', StringSplitOptions.RemoveEmptyEntries);
-                string[] colonne;
-                int nombre,cPrevious;
-                bool bordureEst = false, bordureSud=false, bordureOuest=false, bordureNord=false;
-                List<Parcelle> parcelles = new List<Parcelle>();
-                List<Unite> unites = new List<Unite>();
-                Parcelle.TypeParcelle typeParcelle;
+                string[] colonnes;
 
                 //unites.Clear();
-                for (var l = 0; l < 10 && bordureSud;)
+                for (var l = 0; l < lignes.Length; l++)
                 {
                     var ligne = lignes[l];
-                    colonne = ligne.Split(':');
-                    for (var c = 0; c < 10 && bordureEst; c++)
+                    colonnes = ligne.Split(':');
+                    for (var c = 0; c < colonnes.Length; c++)
                     {
-                        unites.Add(new Unite(l, c));
-                        bordureEst = bordureSud = bordureOuest = bordureNord = false;
-                        var chiffre = colonne[c];
-                        nombre = Convert.ToInt32(chiffre);
-
-                        if (nombre >= (int)SensFrontiere.Mer)
-                        {
-                            typeParcelle = Parcelle.TypeParcelle.Mer;
-                            nombre -= (int)SensFrontiere.Mer;
-                        }
-                        else if (nombre >= (int)SensFrontiere.Foret)
-                        {
-                            typeParcelle = Parcelle.TypeParcelle.Foret;
-                            nombre -= (int)SensFrontiere.Foret;
-                        }
-
-                        if (nombre >= (int)SensFrontiere.Est)
-                        {
-                            nombre -= (int)SensFrontiere.Est;
-                            bordureEst = true;
-                        }
-
-                        if (nombre >= (int)SensFrontiere.Sud)
-                        {
-                            nombre -= (int)SensFrontiere.Sud;
-                            bordureSud = true;
-                        }
-                        if (nombre >= (int)SensFrontiere.Ouest)
-                        {
-                            nombre -= (int)SensFrontiere.Ouest;
-                            bordureOuest = true;
-                        }
-
-                        if (nombre >= (int)SensFrontiere.Nord)
-                        {
-                            nombre -= (int)SensFrontiere.Nord;
-                            bordureNord = true;
-                        }
-                        if (bordureEst)
-                        {
-                            cPrevious=c;
-                        }
-                        if (bordureEst && bordureSud)
-                        {
-
-                        }
-                        // Trouver à quelle Parcelle ça appartient ? -> A chaque frontière EST on saute de ligne
-                        // Trouver ces coordonnées ?
-                        // Verifier chaque frontières Est et le mettre dans "parcelles[0]"-> parcelle n°1, "parcelles[1]"-> parcelle n°2
-                        
+                        string colonne = colonnes[c];
+                        int chiffre = Convert.ToInt32(colonne);
+                        tab[l][c] = chiffre;
                     }
                 }
-                // parcelles.Add(new Parcelle(typeParcelle, unites));
+
+                boucle:
+                for (var l = 0; l < tab.Length; l++)
+                {
+                    var colonnes2 = tab[l];
+                    for (var c = 0; c < colonnes2.Length; c++)
+                        if (colonnes2[c] != 0)
+                        {
+                            unites = TrouverUnite(ref tab, new Unite(c, l), out typeParcelle);
+                            unites = unites.Distinct().ToList(); // enlève les doublons
+                            parcelles.Add(new Parcelle(typeParcelle, unites));
+                            goto boucle;
+                        }
+                }
 
                 return new Carte(parcelles.ToArray());
             }
             catch (Exception e)
             {
                 Console.WriteLine("Échec du chargement de la carte");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Erreur : {0}", e.Message);
                 return null;
             }
+            finally
+            {
+                if (fichierChiffre != null)
+                    fichierChiffre.Close(); // fermeture du fichier
+            }
+        }
+
+        private static List<Unite> TrouverUnite(ref int[][] tab, Unite debut, out Parcelle.TypeParcelle typeParcelle)
+        {
+            int frontier = tab[debut.Y][debut.X];
+            List<Unite> unites = new List<Unite>();
+            typeParcelle = Parcelle.TypeParcelle.Normal;
+            tab[debut.Y][debut.X] = 0;
+
+            if (frontier != 0) // Cette unite à déjà était traité
+            {
+                unites.Add(debut); // 1,1
+
+                if (frontier >= (int)Parcelle.TypeParcelle.Mer)
+                    typeParcelle = Parcelle.TypeParcelle.Mer;
+                else if (frontier >= (int)Parcelle.TypeParcelle.Foret)
+                    typeParcelle = Parcelle.TypeParcelle.Foret;
+
+                frontier -= (int)typeParcelle;
+
+                // Y = Ligne, X = Cologne
+                if (frontier >= (int)SensFrontiere.Est) // -> 1,2
+                    frontier -= (int)SensFrontiere.Est;
+                else
+                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X + 1, debut.Y), out _));
+
+                if (frontier >= (int)SensFrontiere.Sud) // v 2,1
+                    frontier -= (int)SensFrontiere.Sud;
+                else
+                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y + 1), out _));
+
+                if (frontier >= (int)SensFrontiere.Ouest) // <- 1,0
+                    frontier -= (int)SensFrontiere.Ouest;
+                else
+                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X - 1, debut.Y), out _));
+
+                if (frontier >= (int)SensFrontiere.Nord) // ^ 0,1
+                    frontier -= (int)SensFrontiere.Nord;
+                else
+                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y - 1), out _));
+            }
+
+            return unites;
         }
 
         /// <summary>
@@ -128,7 +134,7 @@ namespace Rhum_de_Guybrush
         public static void Encodage(Carte carte)
         {
             int[][] tab = new int[10][];
-            StreamWriter fichierChiffre = null;
+            StreamWriter fichierClair = null;
             bool debut;
 
             // Initialisation des colognes du tableau
@@ -167,7 +173,7 @@ namespace Rhum_de_Guybrush
             // Convertion du tableau dans le ficher chiffre
             try
             {
-                fichierChiffre = new StreamWriter(carte.Nom + ".chiffre");
+                fichierClair = new StreamWriter(carte.Nom + ".chiffre");
 
                 foreach (var l in tab)
                 {
@@ -175,11 +181,11 @@ namespace Rhum_de_Guybrush
                     foreach (var c in l)
                     {
                         if (!debut)
-                            fichierChiffre.Write(':');
-                        fichierChiffre.Write(c);
+                            fichierClair.Write(':');
+                        fichierClair.Write(c);
                         debut = false;
                     }
-                    fichierChiffre.Write('|');
+                    fichierClair.Write('|');
                 }
             }
             catch (Exception e)
@@ -190,8 +196,8 @@ namespace Rhum_de_Guybrush
             }
             finally
             {
-                if (fichierChiffre != null)
-                    fichierChiffre.Close(); // fermeture du fichier
+                if (fichierClair != null)
+                    fichierClair.Close(); // fermeture du fichier
             }
         }
         #endregion

@@ -9,11 +9,11 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Coordonnée X de l'unitée
         /// </summary>
-        private int x;
+        private readonly int x;
         /// <summary>
         /// Coordonnée Y de l'unitée
         /// </summary>
-        private int y;
+        private readonly int y;
         #endregion
 
         #region Accesseur
