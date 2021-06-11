@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rhum_de_Guybrush
 {
     public class Carte
     {
         #region Attributs
-        private string nom;
-        private Parcelle[] parcelles;
-        private Parcelle[] parcellesPlantable;
+        private readonly string nom;
+        private readonly Parcelle[] parcelles;
+        private readonly Parcelle[] parcellesCultivable;
         #endregion
 
         #region Accesseur
@@ -24,57 +22,80 @@ namespace Rhum_de_Guybrush
         public Carte(Parcelle[] parcelles)
         {
             this.parcelles = parcelles;
+
+            // On on récupérer seulement les parcelles cultivable et on met dans parcellesCultivable
+            var pList = parcelles.ToList();
+            pList = pList.FindAll(x => x.Type == Parcelle.TypeParcelle.Normal);
+            parcellesCultivable = pList.ToArray();
         }
 
         public Carte(string chemin)
         {
-            nom = Path.GetFileNameWithoutExtension(chemin);
-            StreamReader fichierClair = new StreamReader(chemin);
+            StreamReader fichierClair = null;
             Parcelle.TypeParcelle typeDeParcelle;
-
-            parcelles = new Parcelle['z' - 'a' + 2];
-            parcellesPlantable = new Parcelle['z' - 'a'];
             int l = 0;
             int c;
             int num;
             string ligne;
 
-            while ((ligne = fichierClair.ReadLine()) != null)
+            parcelles = new Parcelle['z' - 'a' + 2];
+            parcellesCultivable = new Parcelle['z' - 'a'];
+            nom = Path.GetFileNameWithoutExtension(chemin); // Récupéartion du nom du fichier source
+
+            try
             {
-                c = 0;
-                foreach (var lettre in ligne)
+                fichierClair = new StreamReader(chemin); // ouverture du fichier pour lecture
+
+                // Lecture du fichier
+                while ((ligne = fichierClair.ReadLine()) != null)
                 {
-                    switch (lettre)
+                    c = 0;
+                    foreach (var lettre in ligne)
                     {
-                        case 'M':
-                            typeDeParcelle = Parcelle.TypeParcelle.Mer;
-                            num = parcellesPlantable.Length + 0;
-                            break;
-                        case 'F':
-                            typeDeParcelle = Parcelle.TypeParcelle.Foret;
-                            num = parcellesPlantable.Length + 1;
-                            break;
-                        default:
-                            typeDeParcelle = Parcelle.TypeParcelle.Normal;
-                            num = lettre - 'a';
+                        switch (lettre)
+                        {
+                            // Récupération du nom et type de la parcelle
+                            case 'M':
+                                typeDeParcelle = Parcelle.TypeParcelle.Mer;
+                                num = parcellesCultivable.Length + 0;
+                                break;
+                            case 'F':
+                                typeDeParcelle = Parcelle.TypeParcelle.Foret;
+                                num = parcellesCultivable.Length + 1;
+                                break;
+                            default:
+                                typeDeParcelle = Parcelle.TypeParcelle.Normal;
+                                num = lettre - 'a';
 
-                            if (parcellesPlantable[num] == null)
-                                parcellesPlantable[num] = new Parcelle(typeDeParcelle);
+                                if (parcellesCultivable[num] == null)
+                                    parcellesCultivable[num] = new Parcelle(typeDeParcelle);
 
-                            parcellesPlantable[num].Ajouter(new Unite(c, l));
-                            break;
+                                parcellesCultivable[num].Ajouter(new Unite(c, l));
+                                break;
+                        }
+
+                        if (parcelles[num] == null)
+                            parcelles[num] = new Parcelle(typeDeParcelle);
+
+                        // Ajoue de la parcelle
+                        parcelles[num].Ajouter(new Unite(c, l));
+                        c++;
                     }
-
-                    if (parcelles[num] == null)
-                        parcelles[num] = new Parcelle(typeDeParcelle);
-
-                    parcelles[num].Ajouter(new Unite(c, l));
-                    c++;
+                    l++;
                 }
-                l++;
-            }
 
-            fichierClair.Close();
+                fichierClair.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Échec du chargement de la carte");
+                Console.WriteLine("Erreur : {0}", e.Message);
+            }
+            finally
+            {
+                if (fichierClair != null)
+                    fichierClair.Close(); // fermeture du fichier
+            }
         }
         #endregion
 
@@ -82,26 +103,37 @@ namespace Rhum_de_Guybrush
         #region Méthodes
         public void Affichage()
         {
+            char lettre = 'a';
             char[][] tab = new char[10][];
+
+            // Initialisation des colognes du tableau
             for (int i = 0; i < tab.Length; i++)
                 tab[i] = new char[10];
 
+            // Lecture des parcelles pour récuperer toutes les unités
+            // et les mettres dans un tableau en 2 dimension
             for (int i = 0; i < parcelles.Length; i++)
             {
                 var parcelle = parcelles[i];
-                char name = ObtenirNom(i);
-
                 if (parcelle != null)
-                    foreach (var unite in parcelle.Unites)
+                {
+                    char nom = parcelle.Type switch
                     {
-                        tab[unite.Y][unite.X] = name;
-                    }
+                        Parcelle.TypeParcelle.Foret => 'F',
+                        Parcelle.TypeParcelle.Mer => 'M',
+                        _ => lettre++,
+                    };
+                    foreach (var unite in parcelle.Unites)
+                        tab[unite.Y][unite.X] = nom;
+                }
             }
 
-            foreach(var l in tab)
+            // Affichage du tableau en 2 dimension
+            foreach (var l in tab)
             {
                 foreach(var c in l)
                 {
+                    // Ajoue de couleur pour les types
                     switch (c)
                     {
                         case 'M':
@@ -122,13 +154,24 @@ namespace Rhum_de_Guybrush
 
         public void AffichageList()
         {
-            for (int i = 0; i < parcellesPlantable.Length; i++)
+            char lettre = 'a';
+
+            // Lecture de toutes les pacelles cultivable
+            for (int i = 0; i < parcellesCultivable.Length; i++)
             {
-                var parcelle = parcellesPlantable[i];
-                char nom = ObtenirNom(i);
+                var parcelle = parcellesCultivable[i];
 
                 if (parcelle != null)
                 {
+                    // Récupération du nom
+                    char nom = parcelle.Type switch
+                    {
+                        Parcelle.TypeParcelle.Foret => 'F',
+                        Parcelle.TypeParcelle.Mer => 'M',
+                        _ => lettre++,
+                    };
+
+                    // Affichage
                     Console.WriteLine($"PARCELLE {nom} - {parcelle.Taille} unites");
                     foreach (var unite in parcelle.Unites)
                         Console.Write($"({unite.Y},{unite.X})\t");
@@ -142,13 +185,18 @@ namespace Rhum_de_Guybrush
             List<Parcelle> resultat = new List<Parcelle>();
 
             Console.WriteLine($"Parcelles de taille supérieure à {taille} : ");
-            for (int i = 0; i < parcellesPlantable.Length; i++)
+
+            // Lecture de toutes les pacelles cultivable
+            for (int i = 0; i < parcellesCultivable.Length; i++)
             {
-                var parcelle = parcellesPlantable[i];
+                var parcelle = parcellesCultivable[i];
+
                 if (parcelle == null)
                     continue;
-                char nom = ObtenirNom(i);
 
+                char nom = (char)('a' + i); // Récupération du nom
+
+                // Rechercher et affichage
                 if (parcelle.Taille >= taille)
                 {
                     resultat.Add(parcelle);
@@ -156,6 +204,7 @@ namespace Rhum_de_Guybrush
                 }
             }
 
+            // Si on a rien trouvais
             if (resultat.Count == 0)
                 Console.WriteLine("Aucune parcelle");
 
@@ -165,8 +214,7 @@ namespace Rhum_de_Guybrush
         public int TailleParcelle(char nom)
         {
             int taille = 0;
-            int test = nom - 'a';
-            Parcelle parcelle = parcellesPlantable[nom - 'a'];
+            Parcelle parcelle = parcellesCultivable[nom - 'a'];
 
             if (parcelle == null)
                 Console.WriteLine($"Parcelle {nom} : inexistante");
@@ -182,31 +230,20 @@ namespace Rhum_de_Guybrush
             double moyenne = 0;
             int nbParcelles = 0;
 
-            foreach (var parcelle in parcellesPlantable)
+            foreach (var parcelle in parcellesCultivable)
                 if (parcelle != null)
                 {
                     moyenne += parcelle.Taille;
                     nbParcelles++;
                 }
 
+            // Calcul de la moyenne
             moyenne /= nbParcelles;
-
             moyenne = Math.Round(moyenne, 2);
 
             Console.WriteLine("Aire moyenne : " + moyenne);
 
             return moyenne;
-        }
-
-        private static char ObtenirNom(int i)
-        {
-            char nom = (char)('a' + i);
-
-            if (i == 'z' - 'a' + 0)
-                nom = 'M';
-            else if (i == 'z' - 'a' + 1)
-                nom = 'F';
-            return nom;
         }
         #endregion
     }

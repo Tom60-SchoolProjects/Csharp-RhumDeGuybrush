@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Rhum_de_Guybrush
 {
@@ -27,11 +23,11 @@ namespace Rhum_de_Guybrush
         /// <summary>
         /// Type de la Parcelle.
         /// </summary>
-        private TypeParcelle type;
+        private readonly TypeParcelle type;
         /// <summary>
         /// Liste des unités dans la Parcelle.
         /// </summary>
-        private List<Unite> unites;
+        private readonly List<Unite> unites;
         #endregion
 
         #region Accesseur
