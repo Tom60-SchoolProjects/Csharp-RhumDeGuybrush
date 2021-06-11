@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace Rhum_de_Guybrush
 {
+    /// <summary>
+    /// Classe Codage: modélise le codage et décodage d'une carte
+    /// </summary>
     public static class Codage
     {
         #region Enumerations
+        /// <summary>
+        /// Enumération du sens des frontières et des unités spéciales.
+        /// </summary>
         public enum SensFrontiere
         {
             Nord = 1,
