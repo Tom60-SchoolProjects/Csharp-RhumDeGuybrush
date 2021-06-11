@@ -69,7 +69,7 @@ namespace Rhum_de_Guybrush
                     for (var c = 0; c < colonnes2.Length; c++)
                         if (colonnes2[c] != 0)
                         {
-                            unites = TrouverUnite(ref tab, new Unite(c, l), out typeParcelle);
+                            unites = TrouverUnites(ref tab, new Unite(c, l), out typeParcelle);
                             unites = unites.Distinct().ToList(); // enlève les doublons
                             parcelles.Add(new Parcelle(typeParcelle, unites));
                             goto boucle;
@@ -90,8 +90,14 @@ namespace Rhum_de_Guybrush
                     fichierChiffre.Close(); // fermeture du fichier
             }
         }
-
-        private static List<Unite> TrouverUnite(ref int[][] tab, Unite debut, out Parcelle.TypeParcelle typeParcelle)
+        /// <summary>
+        /// Trouver les unités d'une parcelle
+        /// </summary>
+        /// <param name="tab">Carte chiffrée</param>
+        /// <param name="debut">Position de la 1ere unite</param>
+        /// <param name="typeParcelle">Type de la parcelle</param>
+        /// <returns>La liste des unités d'une parcelle</returns>
+        private static List<Unite> TrouverUnites(ref int[][] tab, Unite debut, out Parcelle.TypeParcelle typeParcelle)
         {
             int frontier = tab[debut.Y][debut.X];
             List<Unite> unites = new List<Unite>();
@@ -114,22 +120,22 @@ namespace Rhum_de_Guybrush
                 if (frontier >= (int)SensFrontiere.Est)
                     frontier -= (int)SensFrontiere.Est;
                 else
-                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X + 1, debut.Y), out _));
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X + 1, debut.Y), out _));
 
                 if (frontier >= (int)SensFrontiere.Sud)
                     frontier -= (int)SensFrontiere.Sud;
                 else
-                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y + 1), out _));
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y + 1), out _));
 
                 if (frontier >= (int)SensFrontiere.Ouest)
                     frontier -= (int)SensFrontiere.Ouest;
                 else
-                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X - 1, debut.Y), out _));
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X - 1, debut.Y), out _));
 
                 if (frontier >= (int)SensFrontiere.Nord)
                     frontier -= (int)SensFrontiere.Nord;
                 else
-                    unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y - 1), out _));
+                    unites.AddRange(TrouverUnites(ref tab, new Unite(debut.X, debut.Y - 1), out _));
             }
 
             return unites;

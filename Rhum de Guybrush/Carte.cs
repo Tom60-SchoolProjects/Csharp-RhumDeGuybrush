@@ -8,17 +8,17 @@ namespace Rhum_de_Guybrush
     public class Carte
     {
         #region Attributs
-            
+
         /// <summary>
         /// Nom de la carte
         /// </summary>
         private string nom;
-        
+
         /// <summary>
         /// Tableau contenant les parcelles qui composent une carte
         /// </summary>
         private Parcelle[] parcelles;
-        
+
         /// <summary>
         /// tableau contenant les parcelles cultivables qui composent une carte
         /// </summary>
@@ -127,6 +127,9 @@ namespace Rhum_de_Guybrush
 
 
         #region Méthodes
+        /// <summary>
+        /// Affichage de la carte.
+        /// </summary>
         public void Affichage()
         {
             char lettre = 'a';
@@ -157,7 +160,7 @@ namespace Rhum_de_Guybrush
             // Affichage du tableau en 2 dimension
             foreach (var l in tab)
             {
-                foreach(var c in l)
+                foreach (var c in l)
                 {
                     // Ajoue de couleur pour les types
                     switch (c)
@@ -177,7 +180,9 @@ namespace Rhum_de_Guybrush
                 Console.WriteLine();
             }
         }
-
+        /// <summary>
+        /// Affichage de la liste des parcelles
+        /// </summary>
         public void AffichageList()
         {
             char lettre = 'a';
@@ -205,7 +210,11 @@ namespace Rhum_de_Guybrush
                 }
             }
         }
-
+        /// <summary>
+        /// Recherche les parcelles dont la taille est supérieur à la valeur donnée
+        /// </summary>
+        /// <param name="taille">taille des parcelles recherchées</param>
+        /// <returns>La liste des parcelles avec une taille supérieur à celle donnée</returns>
         public IReadOnlyList<Parcelle> Recherche(long taille)
         {
             List<Parcelle> resultat = new List<Parcelle>();
@@ -236,7 +245,11 @@ namespace Rhum_de_Guybrush
 
             return resultat;
         }
-
+        /// <summary>
+        /// Calculer la taille d'une parcelle.
+        /// </summary>
+        /// <param name="nom">Nom de la parcelle.</param>
+        /// <returns>La taille d'une parcelle.</returns>
         public int TailleParcelle(char nom)
         {
             int taille = 0;
@@ -250,7 +263,10 @@ namespace Rhum_de_Guybrush
             Console.WriteLine($"Taille de la parcelle {nom} : {taille} unites" + Environment.NewLine);
             return taille;
         }
-
+        /// <summary>
+        /// Calcule la taille moyenne des parcelles cultivables
+        /// </summary>
+        /// <returns>La taille moyenne des parcelles cultivable</returns>
         public double TailleMoyenne()
         {
             double moyenne = 0;
