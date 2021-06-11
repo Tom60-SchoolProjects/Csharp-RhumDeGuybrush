@@ -37,12 +37,12 @@ namespace Rhum_de_Guybrush
 
             try
             {
-                fichierChiffre = new StreamReader(chemin);
+                fichierChiffre = new StreamReader(chemin); // ouverture du fichier pour lecture
                 string texte = fichierChiffre.ReadToEnd();
                 string[] lignes = texte.Split('|', StringSplitOptions.RemoveEmptyEntries);
                 string[] colonnes;
 
-                //unites.Clear();
+                // Convertion du texte en tableau à deux dimenssion
                 for (var l = 0; l < lignes.Length; l++)
                 {
                     var ligne = lignes[l];
@@ -55,6 +55,7 @@ namespace Rhum_de_Guybrush
                     }
                 }
 
+                // Recherche de toutes les parcelles
                 boucle:
                 for (var l = 0; l < tab.Length; l++)
                 {
@@ -73,7 +74,7 @@ namespace Rhum_de_Guybrush
             }
             catch (Exception e)
             {
-                Console.WriteLine("Échec du chargement de la carte");
+                Console.WriteLine("Échec du déchiffrage de la carte");
                 Console.WriteLine("Erreur : {0}", e.Message);
                 return null;
             }
@@ -91,10 +92,11 @@ namespace Rhum_de_Guybrush
             typeParcelle = Parcelle.TypeParcelle.Normal;
             tab[debut.Y][debut.X] = 0;
 
-            if (frontier != 0) // Cette unite à déjà était traité
+            if (frontier != 0) // Traité l'unité s'il n'a pas déjà été traité
             {
-                unites.Add(debut); // 1,1
+                unites.Add(debut);
 
+                // Récupérer la frontier
                 if (frontier >= (int)Parcelle.TypeParcelle.Mer)
                     typeParcelle = Parcelle.TypeParcelle.Mer;
                 else if (frontier >= (int)Parcelle.TypeParcelle.Foret)
@@ -102,23 +104,23 @@ namespace Rhum_de_Guybrush
 
                 frontier -= (int)typeParcelle;
 
-                // Y = Ligne, X = Cologne
-                if (frontier >= (int)SensFrontiere.Est) // -> 1,2
+                // Ajouter les unités adjacentes
+                if (frontier >= (int)SensFrontiere.Est)
                     frontier -= (int)SensFrontiere.Est;
                 else
                     unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X + 1, debut.Y), out _));
 
-                if (frontier >= (int)SensFrontiere.Sud) // v 2,1
+                if (frontier >= (int)SensFrontiere.Sud)
                     frontier -= (int)SensFrontiere.Sud;
                 else
                     unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y + 1), out _));
 
-                if (frontier >= (int)SensFrontiere.Ouest) // <- 1,0
+                if (frontier >= (int)SensFrontiere.Ouest)
                     frontier -= (int)SensFrontiere.Ouest;
                 else
                     unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X - 1, debut.Y), out _));
 
-                if (frontier >= (int)SensFrontiere.Nord) // ^ 0,1
+                if (frontier >= (int)SensFrontiere.Nord)
                     frontier -= (int)SensFrontiere.Nord;
                 else
                     unites.AddRange(TrouverUnite(ref tab, new Unite(debut.X, debut.Y - 1), out _));
@@ -141,7 +143,7 @@ namespace Rhum_de_Guybrush
             for (int i = 0; i < tab.Length; i++)
                 tab[i] = new int[10];
 
-            // Calcul des fontier et stocke dans le tablea
+            // Calcul des frontières et stocke dans le tableau
             for (int i = 0; i < carte.Parcelles.Length; i++)
             {
                 var parcelle = carte.Parcelles[i];
@@ -151,17 +153,16 @@ namespace Rhum_de_Guybrush
                     {
                         int sensFrontier = 0;
 
-                        foreach (var sousUnite in parcelle.Unites) // 1,1
+                        foreach (var sousUnite in parcelle.Unites)
                         {
-                            // Y = Ligne, X = Cologne
-                            if (unite.Y == sousUnite.Y && unite.X + 1 == sousUnite.X) // 1.2
-                                sensFrontier += (int)SensFrontiere.Est; // 8
-                            if (unite.Y == sousUnite.Y && unite.X - 1 == sousUnite.X) // 1,0
-                                sensFrontier += (int)SensFrontiere.Ouest; // 2
-                            if (unite.Y + 1 == sousUnite.Y && unite.X == sousUnite.X) // 2.1
-                                sensFrontier += (int)SensFrontiere.Sud; // 4
-                            if (unite.Y - 1 == sousUnite.Y && unite.X == sousUnite.X) //0,1
-                                sensFrontier += (int)SensFrontiere.Nord; // 1
+                            if (unite.Y == sousUnite.Y && unite.X + 1 == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Est;
+                            if (unite.Y == sousUnite.Y && unite.X - 1 == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Ouest;
+                            if (unite.Y + 1 == sousUnite.Y && unite.X == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Sud;
+                            if (unite.Y - 1 == sousUnite.Y && unite.X == sousUnite.X)
+                                sensFrontier += (int)SensFrontiere.Nord;
                         }
 
                         sensFrontier = ((int)SensFrontiere.Est + (int)SensFrontiere.Ouest + (int)SensFrontiere.Sud + (int)SensFrontiere.Nord) - sensFrontier;
@@ -173,7 +174,7 @@ namespace Rhum_de_Guybrush
             // Convertion du tableau dans le ficher chiffre
             try
             {
-                fichierClair = new StreamWriter(carte.Nom + ".chiffre");
+                fichierClair = new StreamWriter(carte.Nom + ".chiffre"); // ouverture du fichier pour écriture
 
                 foreach (var l in tab)
                 {

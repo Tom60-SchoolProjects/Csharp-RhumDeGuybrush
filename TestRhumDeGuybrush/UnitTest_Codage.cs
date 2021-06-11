@@ -48,6 +48,14 @@ namespace TestRhumDeGuybrush
 
             Assert.AreEqual(tailleCarte, tailleCarteOrigin);
             Assert.AreEqual(carte.TailleMoyenne(), carteOrigin.TailleMoyenne());
+
+            var recherche = carte.Recherche(4);
+            Assert.AreEqual(recherche.Count, 9);
+
+            Console.WriteLine();
+
+            recherche = carte.Recherche(12);
+            Assert.AreEqual(recherche.Count, 0);
         }
 
         [TestMethod]
