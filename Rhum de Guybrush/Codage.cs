@@ -95,8 +95,10 @@ namespace Rhum_de_Guybrush
         /// Coder une carte claire afin d’obtenir une carte chiffrée.
         /// </summary>
         /// <param name="carte">Carte.</param>
-        public static void Encodage(Carte carte)
+        /// <returns><see langword="true"/> si la l'encodage à réussie, <see langword="false"/> sinon.</returns>
+        public static bool Encodage(Carte carte)
         {
+            bool reussite = false;
             int[][] tab = new int[10][];
             StreamWriter fichierClair = null;
             bool debut;
@@ -150,18 +152,21 @@ namespace Rhum_de_Guybrush
                     }
                     fichierClair.Write('|');
                 }
+
+                reussite = true;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Échec du chiffrement de la carte");
                 Console.WriteLine("Erreur : {0}", e.Message);
-                return;
             }
             finally
             {
                 if (fichierClair != null)
                     fichierClair.Close(); // fermeture du fichier
             }
+
+            return reussite;
         }
 
         /// <summary>

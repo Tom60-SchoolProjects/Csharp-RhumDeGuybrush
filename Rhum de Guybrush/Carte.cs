@@ -179,7 +179,7 @@ namespace Rhum_de_Guybrush
                     }
 
                     Console.Write("{0}", c);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 Console.WriteLine();
             }
