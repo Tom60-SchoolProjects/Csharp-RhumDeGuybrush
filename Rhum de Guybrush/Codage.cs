@@ -25,10 +25,10 @@ namespace Rhum_de_Guybrush
 
         #region Méthodes
         /// <summary>
-        /// Permettre de lire une carte chiffrée contenue dans un fichier «point chiffre» pour la charger en mémoire.
+        /// Lire une carte chiffrée et la déchiffrer en carte claire.
         /// </summary>
-        /// <param name="chemin"></param>
-        /// <returns></returns>
+        /// <param name="chemin">Chemin vers le fichier .chiffre.</param>
+        /// <returns>La carte déchiffrée.</returns>
         public static Carte Decodage(string chemin)
         {
             int[][] tab = new int[10][];
