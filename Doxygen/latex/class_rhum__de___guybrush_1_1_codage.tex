@@ -19,7 +19,7 @@ enum class \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a5089e268b3a7d2
 \item 
 static \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a6a335a06661e470f1e5a15094891a174}{Decodage}} (string chemin)
 \begin{DoxyCompactList}\small\item\em Lire une carte chiffrée et la déchiffrer en carte claire. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}{Encodage}} (\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} carte)
+static bool \mbox{\hyperlink{class_rhum__de___guybrush_1_1_codage_aa206ce199068926d62018e2c8ef49fd1}{Encodage}} (\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}} carte)
 \begin{DoxyCompactList}\small\item\em Coder une carte claire afin d’obtenir une carte chiffrée. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Fonctions membres privées statiques}
 \begin{DoxyCompactItemize}
@@ -65,11 +65,11 @@ Lire une carte chiffrée et la déchiffrer en carte claire.
 \begin{DoxyReturn}{Renvoie}
 La carte déchiffrée.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}\label{class_rhum__de___guybrush_1_1_codage_a9698b6768b1758a157b47dd543f6c889}} 
+\mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_aa206ce199068926d62018e2c8ef49fd1}\label{class_rhum__de___guybrush_1_1_codage_aa206ce199068926d62018e2c8ef49fd1}} 
 \index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!Encodage@{Encodage}}
 \index{Encodage@{Encodage}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}
 \doxysubsubsection{\texorpdfstring{Encodage()}{Encodage()}}
-{\footnotesize\ttfamily static void Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Encodage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}}]{carte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static bool Rhum\+\_\+de\+\_\+\+Guybrush.\+Codage.\+Encodage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}}]{carte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -80,6 +80,9 @@ Coder une carte claire afin d’obtenir une carte chiffrée.
 {\em carte} & \mbox{\hyperlink{class_rhum__de___guybrush_1_1_carte}{Carte}}.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+{\ttfamily true} si la l\textquotesingle{}encodage à réussie, {\ttfamily false} sinon.
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_rhum__de___guybrush_1_1_codage_ac953569f2735f4ec287ec436b519098c}\label{class_rhum__de___guybrush_1_1_codage_ac953569f2735f4ec287ec436b519098c}} 
 \index{Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}!TrouverUnites@{TrouverUnites}}
 \index{TrouverUnites@{TrouverUnites}!Rhum\_de\_Guybrush.Codage@{Rhum\_de\_Guybrush.Codage}}

@@ -24,6 +24,7 @@
 */
 var menudata={children:[
 {text:"Page principale",url:"index.html"},
+{text:"Pages associées",url:"pages.html"},
 {text:"Paquetages",url:"namespaces.html",children:[
 {text:"Paquetages",url:"namespaces.html"}]},
 {text:"Classes",url:"annotated.html",children:[

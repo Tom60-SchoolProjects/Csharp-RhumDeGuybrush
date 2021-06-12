@@ -1,63 +1,68 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {french}{}
-\contentsline {chapter}{\numberline {1}Index des espaces de nommage}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Paquetages}{1}{section.1.1}%
-\contentsline {chapter}{\numberline {2}Index des classes}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Liste des classes}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Documentation des espaces de nommage}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Référence de l\textquotesingle {}espace de nommage Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush}{5}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Documentation des classes}{7}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carte}{7}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Description détaillée}{8}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Documentation des constructeurs et destructeur}{8}{subsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.2.1}Carte()\hspace {0.1cm}{\footnotesize \ttfamilyFB [1/2]}}{8}{subsubsection.4.1.2.1}%
-\contentsline {subsubsection}{\numberline {4.1.2.2}Carte()\hspace {0.1cm}{\footnotesize \ttfamilyFB [2/2]}}{8}{subsubsection.4.1.2.2}%
-\contentsline {subsection}{\numberline {4.1.3}Documentation des fonctions membres}{8}{subsection.4.1.3}%
-\contentsline {subsubsection}{\numberline {4.1.3.1}Affiche()}{8}{subsubsection.4.1.3.1}%
-\contentsline {subsubsection}{\numberline {4.1.3.2}AfficheList()}{9}{subsubsection.4.1.3.2}%
-\contentsline {subsubsection}{\numberline {4.1.3.3}Recherche()}{9}{subsubsection.4.1.3.3}%
-\contentsline {subsubsection}{\numberline {4.1.3.4}TailleMoyenne()}{9}{subsubsection.4.1.3.4}%
-\contentsline {subsubsection}{\numberline {4.1.3.5}TailleParcelle()}{9}{subsubsection.4.1.3.5}%
-\contentsline {subsection}{\numberline {4.1.4}Documentation des données membres}{10}{subsection.4.1.4}%
-\contentsline {subsubsection}{\numberline {4.1.4.1}nom}{10}{subsubsection.4.1.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.4.2}parcelles}{10}{subsubsection.4.1.4.2}%
-\contentsline {subsubsection}{\numberline {4.1.4.3}parcellesCultivable}{10}{subsubsection.4.1.4.3}%
-\contentsline {subsection}{\numberline {4.1.5}Documentation des propriétés}{10}{subsection.4.1.5}%
-\contentsline {subsubsection}{\numberline {4.1.5.1}Nom}{10}{subsubsection.4.1.5.1}%
-\contentsline {subsubsection}{\numberline {4.1.5.2}Parcelles}{11}{subsubsection.4.1.5.2}%
-\contentsline {section}{\numberline {4.2}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Codage}{11}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Description détaillée}{11}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Documentation des énumérations membres}{11}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}SensFrontiere}{11}{subsubsection.4.2.2.1}%
-\contentsline {subsection}{\numberline {4.2.3}Documentation des fonctions membres}{11}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Decodage()}{11}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Encodage()}{12}{subsubsection.4.2.3.2}%
-\contentsline {subsubsection}{\numberline {4.2.3.3}TrouverUnites()}{12}{subsubsection.4.2.3.3}%
-\contentsline {section}{\numberline {4.3}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parcelle}{12}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Description détaillée}{13}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Documentation des énumérations membres}{13}{subsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.2.1}TypeParcelle}{13}{subsubsection.4.3.2.1}%
-\contentsline {subsection}{\numberline {4.3.3}Documentation des constructeurs et destructeur}{13}{subsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.3.1}Parcelle()\hspace {0.1cm}{\footnotesize \ttfamilyFB [1/2]}}{13}{subsubsection.4.3.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.3.2}Parcelle()\hspace {0.1cm}{\footnotesize \ttfamilyFB [2/2]}}{14}{subsubsection.4.3.3.2}%
-\contentsline {subsection}{\numberline {4.3.4}Documentation des fonctions membres}{14}{subsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.4.1}Ajouter()}{14}{subsubsection.4.3.4.1}%
-\contentsline {subsubsection}{\numberline {4.3.4.2}Supprimer()}{14}{subsubsection.4.3.4.2}%
-\contentsline {subsection}{\numberline {4.3.5}Documentation des données membres}{15}{subsection.4.3.5}%
-\contentsline {subsubsection}{\numberline {4.3.5.1}type}{15}{subsubsection.4.3.5.1}%
-\contentsline {subsubsection}{\numberline {4.3.5.2}unites}{15}{subsubsection.4.3.5.2}%
-\contentsline {subsection}{\numberline {4.3.6}Documentation des propriétés}{15}{subsection.4.3.6}%
-\contentsline {subsubsection}{\numberline {4.3.6.1}Taille}{15}{subsubsection.4.3.6.1}%
-\contentsline {subsubsection}{\numberline {4.3.6.2}Type}{15}{subsubsection.4.3.6.2}%
-\contentsline {subsubsection}{\numberline {4.3.6.3}Unites}{16}{subsubsection.4.3.6.3}%
-\contentsline {section}{\numberline {4.4}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Unite}{16}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Description détaillée}{16}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Documentation des constructeurs et destructeur}{16}{subsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.2.1}Unite()}{16}{subsubsection.4.4.2.1}%
-\contentsline {subsection}{\numberline {4.4.3}Documentation des données membres}{17}{subsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.3.1}x}{17}{subsubsection.4.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.4.3.2}y}{17}{subsubsection.4.4.3.2}%
-\contentsline {subsection}{\numberline {4.4.4}Documentation des propriétés}{17}{subsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.4.1}X}{17}{subsubsection.4.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.4.2}Y}{17}{subsubsection.4.4.4.2}%
-\contentsline {chapter}{Index}{19}{section*.15}%
+\contentsline {chapter}{\numberline {1}Rhum de Guybrush}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Index des espaces de nommage}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Paquetages}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Index des classes}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Liste des classes}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Documentation des espaces de nommage}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Référence de l\textquotesingle {}espace de nommage Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Référence de l\textquotesingle {}espace de nommage Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush}{7}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Documentation des classes}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carte}{9}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Description détaillée}{10}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Documentation des constructeurs et destructeur}{10}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}Carte()\hspace {0.1cm}{\footnotesize \ttfamilyFB [1/2]}}{10}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}Carte()\hspace {0.1cm}{\footnotesize \ttfamilyFB [2/2]}}{10}{subsubsection.5.1.2.2}%
+\contentsline {subsection}{\numberline {5.1.3}Documentation des fonctions membres}{10}{subsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.1}Affiche()}{10}{subsubsection.5.1.3.1}%
+\contentsline {subsubsection}{\numberline {5.1.3.2}AfficheList()}{11}{subsubsection.5.1.3.2}%
+\contentsline {subsubsection}{\numberline {5.1.3.3}Recherche()}{11}{subsubsection.5.1.3.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.4}TailleMoyenne()}{11}{subsubsection.5.1.3.4}%
+\contentsline {subsubsection}{\numberline {5.1.3.5}TailleParcelle()}{11}{subsubsection.5.1.3.5}%
+\contentsline {subsection}{\numberline {5.1.4}Documentation des données membres}{12}{subsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.4.1}nom}{12}{subsubsection.5.1.4.1}%
+\contentsline {subsubsection}{\numberline {5.1.4.2}parcelles}{12}{subsubsection.5.1.4.2}%
+\contentsline {subsubsection}{\numberline {5.1.4.3}parcellesCultivable}{12}{subsubsection.5.1.4.3}%
+\contentsline {subsection}{\numberline {5.1.5}Documentation des propriétés}{12}{subsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.5.1}Nom}{12}{subsubsection.5.1.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.5.2}Parcelles}{13}{subsubsection.5.1.5.2}%
+\contentsline {section}{\numberline {5.2}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Codage}{13}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Description détaillée}{13}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Documentation des énumérations membres}{13}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}SensFrontiere}{13}{subsubsection.5.2.2.1}%
+\contentsline {subsection}{\numberline {5.2.3}Documentation des fonctions membres}{13}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}Decodage()}{13}{subsubsection.5.2.3.1}%
+\contentsline {subsubsection}{\numberline {5.2.3.2}Encodage()}{14}{subsubsection.5.2.3.2}%
+\contentsline {subsubsection}{\numberline {5.2.3.3}TrouverUnites()}{14}{subsubsection.5.2.3.3}%
+\contentsline {section}{\numberline {5.3}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Parcelle}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Description détaillée}{15}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Documentation des énumérations membres}{15}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}TypeParcelle}{15}{subsubsection.5.3.2.1}%
+\contentsline {subsection}{\numberline {5.3.3}Documentation des constructeurs et destructeur}{16}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}Parcelle()\hspace {0.1cm}{\footnotesize \ttfamilyFB [1/2]}}{16}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}Parcelle()\hspace {0.1cm}{\footnotesize \ttfamilyFB [2/2]}}{16}{subsubsection.5.3.3.2}%
+\contentsline {subsection}{\numberline {5.3.4}Documentation des fonctions membres}{16}{subsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.4.1}Ajouter()}{16}{subsubsection.5.3.4.1}%
+\contentsline {subsubsection}{\numberline {5.3.4.2}Supprimer()}{17}{subsubsection.5.3.4.2}%
+\contentsline {subsection}{\numberline {5.3.5}Documentation des données membres}{17}{subsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.5.1}type}{17}{subsubsection.5.3.5.1}%
+\contentsline {subsubsection}{\numberline {5.3.5.2}unites}{17}{subsubsection.5.3.5.2}%
+\contentsline {subsection}{\numberline {5.3.6}Documentation des propriétés}{17}{subsection.5.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.6.1}Taille}{17}{subsubsection.5.3.6.1}%
+\contentsline {subsubsection}{\numberline {5.3.6.2}Type}{18}{subsubsection.5.3.6.2}%
+\contentsline {subsubsection}{\numberline {5.3.6.3}Unites}{18}{subsubsection.5.3.6.3}%
+\contentsline {section}{\numberline {5.4}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Program}{18}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Référence de la classe Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}de\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Unite}{18}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Description détaillée}{19}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Documentation des constructeurs et destructeur}{19}{subsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.2.1}Unite()}{19}{subsubsection.5.5.2.1}%
+\contentsline {subsection}{\numberline {5.5.3}Documentation des données membres}{19}{subsection.5.5.3}%
+\contentsline {subsubsection}{\numberline {5.5.3.1}x}{19}{subsubsection.5.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.5.3.2}y}{19}{subsubsection.5.5.3.2}%
+\contentsline {subsection}{\numberline {5.5.4}Documentation des propriétés}{20}{subsection.5.5.4}%
+\contentsline {subsubsection}{\numberline {5.5.4.1}X}{20}{subsubsection.5.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.5.4.2}Y}{20}{subsubsection.5.5.4.2}%
+\contentsline {section}{\numberline {5.6}Référence de la classe Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Unit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Carte}{20}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Référence de la classe Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rhum\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Guybrush.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Unit\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Codage}{20}{section.5.7}%
+\contentsline {chapter}{Index}{21}{section*.19}%
